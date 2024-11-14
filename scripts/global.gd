@@ -2,6 +2,10 @@ extends Node
 
 var current_scene = null
 var mouse_sens = 0.0015
+var master_audio = 1
+var music_audio = 1
+var sfx_audio = 1
+var menu_sounds_audio = 1
 var film_grain = true
 
 func _ready():
@@ -12,9 +16,10 @@ func save_settings():
 	var save_dict = {
 		"mouse_sens": mouse_sens,
 		"film_grain": film_grain,
-		#"master_audio": master_audio,
-		#"music_audio": music_audio,
-		#"sfx_audio": sfx_audio
+		"master_audio": master_audio,
+		"music_audio": music_audio,
+		"sfx_audio": sfx_audio,
+		"menu_sounds_audio": menu_sounds_audio,
 	}
 	
 	var save_game = FileAccess.open("user://settings.save", FileAccess.WRITE)
@@ -35,9 +40,10 @@ func load_settings():
 		var settings = json.get_data()
 		mouse_sens = settings.get("mouse_sens", mouse_sens)
 		film_grain = settings.get("film_grain", film_grain)
-		#master_audio = settings.get("master_audio", master_audio)
-		#music_audio = settings.get("music_audio", music_audio)
-		#sfx_audio = settings.get("sfx_audio", sfx_audio)
+		master_audio = settings.get("master_audio", master_audio)
+		music_audio = settings.get("music_audio", music_audio)
+		sfx_audio = settings.get("sfx_audio", sfx_audio)
+		menu_sounds_audio = settings.get("menu_sounds_audio", menu_sounds_audio)
 
 func switch_scene(res_path):
 	call_deferred("_deferred_switch_scene", res_path)
