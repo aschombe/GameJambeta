@@ -1,0 +1,175 @@
+[gd_scene load_steps=9 format=3 uid="uid://r2myuuyyxtra"]
+
+[ext_resource type="Script" path="res://scripts/menus/settings_menu.gd" id="1_3f486"]
+[ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/Lacquer-Regular.ttf" id="2_dm021"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1gwt"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g55bm"]
+bg_color = Color(1, 0, 0.0666667, 1)
+
+[sub_resource type="Theme" id="Theme_f3w5d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o0adj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3b8v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iw8e4"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3f486")
+
+[node name="bg" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="mouse_sens_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -230.0
+offset_right = 199.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_dm021")
+theme_override_font_sizes/font_size = 50
+text = "Mouse Sensitivity"
+
+[node name="mouse_sens" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -121.0
+offset_right = 0.5
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_dm021")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="mouse_sens_slider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.5
+offset_top = -153.5
+offset_right = 157.5
+offset_bottom = -126.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_u1gwt")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_g55bm")
+value = 1.0
+
+[node name="film_grain_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.5
+offset_top = -7.0
+offset_right = 119.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_dm021")
+theme_override_font_sizes/font_size = 50
+text = "Film Grain"
+
+[node name="film_grain" type="CheckButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.534
+anchor_top = 0.533
+anchor_right = 0.534
+anchor_bottom = 0.533
+offset_left = -114.52
+offset_top = 30.24
+offset_right = -70.52
+offset_bottom = 54.24
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+theme = SubResource("Theme_f3w5d")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o0adj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_f3b8v")
+
+[node name="film_check" type="CheckBox" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.534
+anchor_top = 0.533
+anchor_right = 0.534
+anchor_bottom = 0.533
+offset_left = -277.52
+offset_top = 37.24
+offset_right = -233.52
+offset_bottom = 61.24
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+theme = SubResource("Theme_f3w5d")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o0adj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_f3b8v")
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = 237.0
+offset_right = 57.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0195435
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.469494, 0.401435, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_dm021")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iw8e4")
+text = "Back"
+flat = true
+
+[connection signal="drag_ended" from="mouse_sens_slider" to="." method="_on_mouse_sens_slider_drag_ended"]
+[connection signal="pressed" from="film_grain" to="." method="_on_film_grain_pressed"]
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

@@ -30,15 +30,6 @@ wallSteps_typeB
 wall_typeA
 wall_typeB
 
-
-TODO:
-tall_small:
-detailLight_double
-detailLight_single
-detailLight_traffic
-wallA_detail
-wallA_detailPainted
-
 0.5:
 door_typeA
 door_typeB
@@ -47,9 +38,6 @@ tree_shurb
 tree_small
 windowSmall_typeA
 windowSmall_typeB
-
-grid_tiny:
-roadDirt_tile
 
 grid_small:
 grass
@@ -79,7 +67,7 @@ wallA_door
 wallA_garage
 wallA_low
 wallA_lowPainted
-wallA_painted
+wallA_open
 wallA_painted
 wallA_roof
 wallA_roofDetailed
@@ -119,3 +107,13 @@ truck_grey
 long_grid:
 roadAsphalt_straight
 roadDirt_straight
+
+tall_small:
+detailLight_double
+detailLight_single
+detailLight_traffic
+wallA_detail
+wallA_detailPainted
+
+grid_tiny:
+roadDirt_tile

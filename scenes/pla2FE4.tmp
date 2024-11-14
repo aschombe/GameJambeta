@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://b55ea2vxi3o70"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_2iq3a"]
+[ext_resource type="PackedScene" uid="uid://dtuj1ek55774g" path="res://assets/arm_flashlight/arm.glb" id="2_jgyyh"]
+[ext_resource type="PackedScene" uid="uid://b4m8ol8pdyyp8" path="res://assets/arm_flashlight/flashlight.glb" id="3_3yyjb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6ys4"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.335048, 0)
+collision_mask = 6
+script = ExtResource("1_2iq3a")
+
+[node name="ui" type="Control" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ui"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -47.0
+offset_right = 80.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+step = 1.0
+value = 75.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_l6ys4")
+
+[node name="neck" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0, 0.0778022, 0)
+
+[node name="Camera3D" type="Camera3D" parent="neck"]
+transform = Transform3D(3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 0.4, 0)
+
+[node name="arm" parent="neck" instance=ExtResource("2_jgyyh")]
+transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0.378, 0.139, 0.178)
+
+[node name="Cube_001" parent="neck/arm/Armature_001/Skeleton3D" index="0"]
+cast_shadow = 0
+
+[node name="flashlight" parent="neck/arm" instance=ExtResource("3_3yyjb")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.468, 0.23, 5.329)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="neck/arm/flashlight"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+light_energy = 0.0
+spot_range = 3.0
+spot_angle = 24.0
+
+[node name="flashLight" parent="neck/arm/flashlight" index="1"]
+cast_shadow = 0
+
+[node name="flashLightCover" parent="neck/arm/flashlight" index="2"]
+cast_shadow = 0
+
+[node name="flashlight_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="flashlight_timer" to="." method="_on_flashlight_timer_timeout"]
+
+[editable path="neck/arm"]
+[editable path="neck/arm/flashlight"]

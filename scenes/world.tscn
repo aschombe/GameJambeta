@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://bdyarewpn6mer"]
+
+[ext_resource type="MeshLibrary" uid="uid://bwk3b06mwvw3f" path="res://scenes/gridmaps/0_5xTiles.tres" id="1_5bqut"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_lx4ch"]
+[ext_resource type="MeshLibrary" uid="uid://drdrwq8qsm8so" path="res://scenes/gridmaps/1xTiles.tres" id="2_7rnsm"]
+[ext_resource type="MeshLibrary" uid="uid://babpinakotdrb" path="res://scenes/gridmaps/1_5xTiles.tres" id="3_ys50j"]
+[ext_resource type="MeshLibrary" uid="uid://bldci2j67wgab" path="res://scenes/gridmaps/grid_big_Tiles.tres" id="5_nk67r"]
+[ext_resource type="MeshLibrary" uid="uid://drq3bn8qj1f0o" path="res://scenes/gridmaps/grid_small_Tiles.tres" id="6_nhhoi"]
+[ext_resource type="MeshLibrary" uid="uid://gkldoicmgro5" path="res://scenes/gridmaps/grid_tiny_Tiles.tres" id="7_buebo"]
+[ext_resource type="MeshLibrary" uid="uid://cxyfb36gnwo1h" path="res://scenes/gridmaps/long_grid_Tiles.tres" id="8_3xc55"]
+[ext_resource type="MeshLibrary" uid="uid://dce8n8s0ux64e" path="res://scenes/gridmaps/tall_small_Tiles.tres" id="9_ru8px"]
+[ext_resource type="MeshLibrary" uid="uid://d4dqxtihkk5pm" path="res://scenes/gridmaps/walls_Tiles.tres" id="10_mgvj1"]
+[ext_resource type="PackedScene" uid="uid://b55ea2vxi3o70" path="res://scenes/entities/player.tscn" id="11_76j22"]
+[ext_resource type="PackedScene" uid="uid://c86wkyda1ovnw" path="res://scenes/entities/battery.tscn" id="12_jcos5"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qpulq"]
+
+[sub_resource type="Sky" id="Sky_8dqnh"]
+sky_material = SubResource("PanoramaSkyMaterial_qpulq")
+
+[sub_resource type="Environment" id="Environment_0dpfc"]
+sky = SubResource("Sky_8dqnh")
+ambient_light_source = 3
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_lx4ch")
+
+[node name="Player" parent="." instance=ExtResource("11_76j22")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 4.76967, 1.29799, -0.573639)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0dpfc")
+
+[node name="Sun1" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.75, 0.5, 0.433013, -0.5, -3.78552e-08, 0.866026, 0.433013, -0.866025, 0.25, 2.34685, 161.04, 0)
+shadow_enabled = true
+
+[node name="Sun2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.75, 0.5, -0.433013, 0.5, 8.22806e-08, 0.866025, 0.433013, -0.866025, -0.25, -3.09408, 161.04, 0)
+light_energy = 0.25
+
+[node name="gridmaps" type="Node3D" parent="."]
+
+[node name="0_5xTiles" type="GridMap" parent="gridmaps"]
+mesh_library = ExtResource("1_5bqut")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 4
+collision_mask = 3
+
+[node name="1xTiles" type="GridMap" parent="gridmaps"]
+mesh_library = ExtResource("2_7rnsm")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 4
+collision_mask = 3
+
+[node name="1_5xTiles" type="GridMap" parent="gridmaps"]
+mesh_library = ExtResource("3_ys50j")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 4
+collision_mask = 3
+
+[node name="grid_big_Tiles" type="GridMap" parent="gridmaps"]
+mesh_library = ExtResource("5_nk67r")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 4
+collision_mask = 3
+data = {
+"cells": PackedInt32Array(7, 65534, 3)
+}
+
+[node name="grid_small_Tiles" type="GridMap" parent="gridmaps"]
+mesh_library = ExtResource("6_nhhoi")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 4
+collision_mask = 3
+data = {
+"cells": PackedInt32Array(7, 65535, 1, 6, 65535, 1, 5, 65535, 1, 5, 65534, 1, 4, 65534, 1, 3, 65534, 1, 3, 65535, 1, 4, 65535, 1, 7, 65534, 1, 6, 65534, 1, 6, 0, 1, 7, 0, 1, 8, 65535, 1, 8, 65534, 1, 9, 65534, 1, 9, 65533, 1, 9, 65532, 1, 8, 65532, 1, 8, 65533, 1, 7, 65533, 1, 7, 65532, 1, 6, 65532, 1, 6, 65533, 1, 9, 65535, 1)
+}
+
+[node name="grid_tiny_Tiles" type="GridMap" parent="gridmaps"]
+mesh_library = ExtResource("7_buebo")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 4
+collision_mask = 3
+
+[node name="long_grid_Tiles" type="GridMap" parent="gridmaps"]
+mesh_library = ExtResource("8_3xc55")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 4
+collision_mask = 3
+
+[node name="tall_small_Tiles" type="GridMap" parent="gridmaps"]
+mesh_library = ExtResource("9_ru8px")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 4
+collision_mask = 3
+
+[node name="walls_Tiles" type="GridMap" parent="gridmaps"]
+mesh_library = ExtResource("10_mgvj1")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 4
+collision_mask = 3
+
+[node name="Battery" parent="." instance=ExtResource("12_jcos5")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.89972, 0.664607, -0.875575)
