@@ -7,16 +7,16 @@ extends Control
 @onready var button_red: Control = $film_grain/button_red
 
 @onready var master_audio_label = $audio_settings/master_audio_label
-@onready var master_audio = $audio_settings/master_audio
+#@onready var master_audio = $audio_settings/master_audio
 @onready var master_audio_slider = $audio_settings/master_audio_slider
 @onready var music_audio_label = $audio_settings/music_audio_label
-@onready var music_audio = $audio_settings/music_audio
+#@onready var music_audio = $audio_settings/music_audio
 @onready var music_audio_slider = $audio_settings/music_audio_slider
 @onready var sfx_audio_label = $audio_settings/sfx_audio_label
-@onready var sfx_audio = $audio_settings/sfx_audio
+#@onready var sfx_audio = $audio_settings/sfx_audio
 @onready var sfx_audio_slider = $audio_settings/sfx_audio_slider
 @onready var menu_audio_label = $audio_settings/menu_audio_label
-@onready var menu_audio = $audio_settings/menu_audio
+#@onready var menu_audio = $audio_settings/menu_audio
 @onready var menu_audio_slider = $audio_settings/menu_audio_slider
 
 @onready var master_bus_index = AudioServer.get_bus_index("Master")
@@ -45,10 +45,10 @@ func _ready():
 	sfx_audio_slider.value = db_to_linear(Global.sfx_audio)
 	menu_audio_slider.value = db_to_linear(Global.menu_sounds_audio)
 	
-	master_audio.text = str(linear_to_db(Global.master_audio))
-	music_audio.text = str(linear_to_db(Global.music_audio))
-	sfx_audio.text = str(linear_to_db(Global.sfx_audio))
-	menu_audio.text = str(linear_to_db(Global.menu_sounds_audio))
+	#master_audio.text = str(linear_to_db(Global.master_audio))
+	#music_audio.text = str(linear_to_db(Global.music_audio))
+	#sfx_audio.text = str(linear_to_db(Global.sfx_audio))
+	#menu_audio.text = str(linear_to_db(Global.menu_sounds_audio))
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
