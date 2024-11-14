@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="GameJamBeta"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://scenes/default_bus_layout.tres"
 
 [autoload]
 
@@ -23,6 +27,7 @@ Global="*res://scripts/global.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [input]
 

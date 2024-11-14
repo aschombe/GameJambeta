@@ -62,25 +62,29 @@ func _on_master_audio_slider_value_changed(value):
 		master_bus_index,
 		linear_to_db(value)
 	)
-	master_audio.text = str(linear_to_db(Global.master_audio))
+	Global.save_settings()
+	#master_audio.text = str(linear_to_db(Global.master_audio))
 
 func _on_music_audio_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(
 		music_bus_index,
 		linear_to_db(value)
 	)
-	music_audio.text = str(linear_to_db(Global.music_audio))
+	Global.save_settings()
+	#music_audio.text = str(linear_to_db(Global.music_audio))
 
 func _on_sfx_audio_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(
 		sfx_bus_index,
 		linear_to_db(value)
 	)
-	sfx_audio.text = str(linear_to_db(Global.sfx_audio))
+	Global.save_settings()
+	#sfx_audio.text = str(linear_to_db(Global.sfx_audio))
 
 func _on_menu_audio_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(
 		menu_bus_index,
 		linear_to_db(value)
 	)
-	menu_audio.text = str(linear_to_db(Global.menu_sounds_audio))
+	Global.save_settings()
+	#menu_audio.text = str(linear_to_db(Global.menu_sounds_audio))
