@@ -58,6 +58,7 @@ theme_override_font_sizes/font_size = 50
 text = "Mouse Sensitivity"
 
 [node name="mouse_sens" type="Label" parent="mouse"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,10 +125,10 @@ anchor_left = 0.534
 anchor_top = 0.533
 anchor_right = 0.534
 anchor_bottom = 0.533
-offset_left = 773.14
-offset_top = 345.68
-offset_right = 817.14
-offset_bottom = 369.68
+offset_left = 771.64
+offset_top = 359.68
+offset_right = 815.64
+offset_bottom = 383.68
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
@@ -135,6 +136,392 @@ theme_override_fonts/font = ExtResource("2_dm021")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o0adj")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_f3b8v")
+button_pressed = true
+
+[node name="button_white" type="Control" parent="film_grain"]
+anchors_preset = 0
+offset_left = 77.0
+offset_top = -400.0
+offset_right = 117.0
+offset_bottom = -360.0
+mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 773.0
+offset_top = 796.0
+offset_right = 818.0
+offset_bottom = 838.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 815.0
+offset_top = 805.0
+offset_right = 827.0
+offset_bottom = 829.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 815.0
+offset_top = 799.0
+offset_right = 821.0
+offset_bottom = 835.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 818.0
+offset_top = 802.0
+offset_right = 824.0
+offset_bottom = 832.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 749.0
+offset_top = 796.0
+offset_right = 773.0
+offset_bottom = 802.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 761.0
+offset_top = 799.0
+offset_right = 785.0
+offset_bottom = 805.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 802.0
+offset_right = 791.0
+offset_bottom = 808.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 808.0
+offset_right = 794.0
+offset_bottom = 814.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 820.0
+offset_right = 794.0
+offset_bottom = 826.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 826.0
+offset_right = 791.0
+offset_bottom = 832.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect11" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 761.0
+offset_top = 829.0
+offset_right = 785.0
+offset_bottom = 835.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect12" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 832.0
+offset_right = 774.0
+offset_bottom = 838.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect13" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 805.0
+offset_right = 743.0
+offset_bottom = 829.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect14" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 740.0
+offset_top = 802.0
+offset_right = 746.0
+offset_bottom = 814.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect15" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 799.0
+offset_right = 749.0
+offset_bottom = 808.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect16" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 746.0
+offset_top = 796.0
+offset_right = 755.0
+offset_bottom = 805.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect17" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 746.0
+offset_top = 829.0
+offset_right = 755.0
+offset_bottom = 838.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect18" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 826.0
+offset_right = 749.0
+offset_bottom = 835.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="ColorRect19" type="ColorRect" parent="film_grain/button_white"]
+layout_mode = 0
+offset_left = 740.0
+offset_top = 820.0
+offset_right = 746.0
+offset_bottom = 832.0
+mouse_filter = 2
+color = Color(0.203322, 0.203322, 0.203322, 1)
+
+[node name="button_red" type="Control" parent="film_grain"]
+anchors_preset = 0
+offset_left = 77.0
+offset_top = -400.0
+offset_right = 117.0
+offset_bottom = -360.0
+mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 746.0
+offset_top = 796.0
+offset_right = 791.0
+offset_bottom = 838.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 749.0
+offset_top = 796.0
+offset_right = 794.0
+offset_bottom = 814.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 749.0
+offset_top = 796.0
+offset_right = 794.0
+offset_bottom = 814.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 749.0
+offset_top = 820.0
+offset_right = 794.0
+offset_bottom = 838.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 826.0
+offset_right = 797.0
+offset_bottom = 838.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 829.0
+offset_right = 803.0
+offset_bottom = 838.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect11" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 773.0
+offset_top = 832.0
+offset_right = 818.0
+offset_bottom = 838.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect12" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 773.0
+offset_top = 796.0
+offset_right = 818.0
+offset_bottom = 802.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect13" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 802.0
+offset_right = 797.0
+offset_bottom = 808.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect14" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 799.0
+offset_right = 803.0
+offset_bottom = 805.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect15" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 809.0
+offset_top = 799.0
+offset_right = 821.0
+offset_bottom = 805.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect16" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 809.0
+offset_top = 799.0
+offset_right = 821.0
+offset_bottom = 805.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect17" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 815.0
+offset_top = 802.0
+offset_right = 824.0
+offset_bottom = 808.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect18" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 818.0
+offset_top = 805.0
+offset_right = 827.0
+offset_bottom = 814.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect19" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 818.0
+offset_top = 820.0
+offset_right = 827.0
+offset_bottom = 829.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect20" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 815.0
+offset_top = 826.0
+offset_right = 824.0
+offset_bottom = 832.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect21" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 809.0
+offset_top = 829.0
+offset_right = 821.0
+offset_bottom = 835.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect22" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 821.0
+offset_top = 814.0
+offset_right = 827.0
+offset_bottom = 820.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 799.0
+offset_right = 780.0
+offset_bottom = 835.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 802.0
+offset_right = 777.0
+offset_bottom = 832.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 740.0
+offset_top = 802.0
+offset_right = 774.0
+offset_bottom = 832.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="film_grain/button_red"]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 805.0
+offset_right = 771.0
+offset_bottom = 829.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
 
 [node name="audio_settings" type="Control" parent="."]
 anchors_preset = 0
@@ -160,6 +547,7 @@ theme_override_font_sizes/font_size = 50
 text = "Master Audio"
 
 [node name="master_audio" type="Label" parent="audio_settings"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -214,6 +602,7 @@ theme_override_font_sizes/font_size = 50
 text = "Music Audio"
 
 [node name="music_audio" type="Label" parent="audio_settings"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -268,6 +657,7 @@ theme_override_font_sizes/font_size = 50
 text = "SFX Audio"
 
 [node name="sfx_audio" type="Label" parent="audio_settings"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -322,6 +712,7 @@ theme_override_font_sizes/font_size = 50
 text = "Menu Audio"
 
 [node name="menu_audio" type="Label" parent="audio_settings"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

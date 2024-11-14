@@ -2,7 +2,9 @@ extends Control
 
 @onready var mouse_sens_slider : HSlider = $mouse/mouse_sens_slider
 @onready var mouse_sens : Label = $mouse/mouse_sens
-@onready var film_grain : CheckButton = $film_grain/film_grain
+@onready var film_grain = $film_grain/film_grain
+@onready var button_white: Control = $film_grain/button_white
+@onready var button_red: Control = $film_grain/button_red
 
 @onready var master_audio_label = $audio_settings/master_audio_label
 @onready var master_audio = $audio_settings/master_audio
@@ -31,6 +33,13 @@ func _ready():
 	mouse_sens_slider.value = 1 + ((99/0.008) * (Global.mouse_sens - 0.001))
 	film_grain.button_pressed = Global.film_grain
 	
+	if Global.film_grain:
+		button_white.visible = false
+		button_red.visible = true
+	else:
+		button_white.visible = true
+		button_red.visible = false
+	
 	master_audio_slider.value = db_to_linear(Global.master_audio)
 	music_audio_slider.value = db_to_linear(Global.music_audio)
 	sfx_audio_slider.value = db_to_linear(Global.sfx_audio)
@@ -47,7 +56,7 @@ func _process(_delta):
 
 func _on_mouse_sens_slider_drag_ended(_value_changed):
 	Global.mouse_sens = 0.001 + (0.008 * (mouse_sens_slider.value - 1))/99
-	$mouse_sens.text = str(roundi(1 + ((99/0.008) * (Global.mouse_sens - 0.001))))
+	#$mouse_sens.text = str(roundi(1 + ((99/0.008) * (Global.mouse_sens - 0.001))))
 	Global.save_settings()
 
 func _on_back_button_pressed():
@@ -56,6 +65,13 @@ func _on_back_button_pressed():
 func _on_film_grain_pressed():
 	Global.film_grain = !Global.film_grain
 	Global.save_settings()
+	
+	if Global.film_grain:
+		button_white.visible = false
+		button_red.visible = true
+	else:
+		button_white.visible = true
+		button_red.visible = false
 
 func _on_master_audio_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(
