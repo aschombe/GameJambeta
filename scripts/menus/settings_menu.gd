@@ -26,6 +26,8 @@ extends Control
 
 @onready var back_button : Button = $back_button
 
+@onready var button_sound: AudioStreamPlayer = $button_sound
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -60,6 +62,8 @@ func _on_mouse_sens_slider_drag_ended(_value_changed):
 	Global.save_settings()
 
 func _on_back_button_pressed():
+	button_sound.play()
+	await get_tree().create_timer(Global.button_sound_timeout).timeout
 	Global.switch_scene("res://scenes/menus/main_menu.tscn")
 
 func _on_film_grain_pressed():
@@ -72,6 +76,9 @@ func _on_film_grain_pressed():
 	else:
 		button_white.visible = true
 		button_red.visible = false
+		
+	button_sound.play()
+	await get_tree().create_timer(Global.button_sound_timeout).timeout
 
 func _on_master_audio_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(

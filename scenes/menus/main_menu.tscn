@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://nygksakyaw4c"]
+[gd_scene load_steps=5 format=3 uid="uid://nygksakyaw4c"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_1kud6"]
 [ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/Lacquer-Regular.ttf" id="2_nhkqu"]
+[ext_resource type="AudioStream" uid="uid://cnmtgydobjoci" path="res://assets/audio/menu_button.ogg" id="3_xdap0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qs5al"]
 
@@ -108,6 +109,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_qs5al")
 text = "Quit
 "
 flat = true
+
+[node name="button_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xdap0")
+volume_db = -10.0
+bus = &"Menu"
 
 [connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="settings_button" to="." method="_on_settings_button_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://r2myuuyyxtra"]
+[gd_scene load_steps=9 format=3 uid="uid://r2myuuyyxtra"]
 
 [ext_resource type="Script" path="res://scripts/menus/settings_menu.gd" id="1_3f486"]
 [ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/Lacquer-Regular.ttf" id="2_dm021"]
+[ext_resource type="AudioStream" uid="uid://cnmtgydobjoci" path="res://assets/audio/menu_button.ogg" id="3_38jjd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1gwt"]
 bg_color = Color(1, 0, 0, 1)
@@ -770,6 +771,11 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iw8e4")
 text = "Back"
 flat = true
+
+[node name="button_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_38jjd")
+volume_db = -10.0
+bus = &"Menu"
 
 [connection signal="drag_ended" from="mouse/mouse_sens_slider" to="." method="_on_mouse_sens_slider_drag_ended"]
 [connection signal="pressed" from="film_grain/film_grain" to="." method="_on_film_grain_pressed"]

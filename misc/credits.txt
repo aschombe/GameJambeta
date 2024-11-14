@@ -5,3 +5,4 @@ Battery Pickup Sound - https://kenney.nl/assets/rpg-audio
 Arms - https://cemckrc.itch.io/fps-arms-psx-style
 Eyehead - https://retro-spud.itch.io/psx-eyehead-monstrosity
 Font - https://fonts.google.com/share?selection.family=Lacquer
+Menu Button Sounds - https://kenney.nl/assets/interface-sounds

@@ -8,6 +8,8 @@ var sfx_audio = 1
 var menu_sounds_audio = 1
 var film_grain = true
 
+var menu_button_sound_timeout = 0.12
+
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
