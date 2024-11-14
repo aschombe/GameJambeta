@@ -1,4 +1,3 @@
-Finished:
 1:
 detailAwning_small
 detailBarrierStrong_damaged
