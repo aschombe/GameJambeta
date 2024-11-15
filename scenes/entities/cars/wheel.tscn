@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqwqgha4xq0fd"]
+
+[ext_resource type="ArrayMesh" uid="uid://d4adtgpktsh5s" path="res://assets/cars/wheel/Wheel.obj" id="1_io3pn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ms4hk"]
+points = PackedVector3Array(0.136789, 0.00395015, 0.458487, 0.136816, 0.327055, 0.321399, -0.136816, 0.00395015, 0.458487, 0.136789, -0.321489, 0.327055, -0.136816, 0.327055, 0.321399, 0.136816, -0.458577, 0.00395015, 0.136816, 0.321399, -0.327145, 0.136789, 0.458487, -0.00403991, -0.136816, -0.321489, 0.327055, -0.136816, 0.458487, -0.00403991, -0.136816, -0.458577, 0.00395015, 0.136789, -0.327145, -0.321489, 0.136816, -0.00403991, -0.458577, -0.136816, 0.321399, -0.327145, -0.136816, -0.327145, -0.321489, -0.136816, -0.00403991, -0.458577)
+
+[node name="wheel" type="RigidBody3D"]
+collision_layer = 5
+collision_mask = 7
+
+[node name="Wheel" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = ExtResource("1_io3pn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_ms4hk")

@@ -30,7 +30,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Global.in_settings = true
 	mouse_sens.text = str(roundi(1 + ((99/0.008) * (Global.mouse_sens - 0.001))))
 	mouse_sens_slider.value = 1 + ((99/0.008) * (Global.mouse_sens - 0.001))

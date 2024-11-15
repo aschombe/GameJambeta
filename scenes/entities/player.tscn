@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b55ea2vxi3o70"]
+[gd_scene load_steps=16 format=3 uid="uid://b55ea2vxi3o70"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_2iq3a"]
 [ext_resource type="PackedScene" uid="uid://dtuj1ek55774g" path="res://assets/arm_flashlight/arm.glb" id="2_jgyyh"]
@@ -45,9 +45,98 @@ shader_parameter/intensity = 0.1
 shader_parameter/speed = 1.0
 shader_parameter/grain_scale = 2.0
 
+[sub_resource type="Animation" id="Animation_7rbwj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../cam_fx/grain:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_funrw"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../cam_fx/grain:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_p2ufa"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../cam_fx/grain:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qouvw"]
+_data = {
+"RESET": SubResource("Animation_7rbwj"),
+"fade_in": SubResource("Animation_funrw"),
+"fade_out": SubResource("Animation_p2ufa")
+}
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.335048, 0)
 collision_mask = 6
+safe_margin = 0.01
 script = ExtResource("1_2iq3a")
 
 [node name="ui" type="Control" parent="."]
@@ -144,11 +233,28 @@ mouse_filter = 2
 
 [node name="flashlight_timer" type="Timer" parent="."]
 
+[node name="fade" type="Node3D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="fade"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fade"]
+libraries = {
+"": SubResource("AnimationLibrary_qouvw")
+}
+
 [node name="PauseMenu" parent="." instance=ExtResource("4_3xgfs")]
 
 [connection signal="body_entered" from="hurt_field" to="." method="_on_hurt_field_body_entered"]
 [connection signal="body_entered" from="neck/Camera3D/arm/flashlight/light_cone" to="." method="_on_light_cone_body_entered"]
 [connection signal="timeout" from="flashlight_timer" to="." method="_on_flashlight_timer_timeout"]
+[connection signal="animation_finished" from="fade/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="neck/Camera3D/arm"]
 [editable path="neck/Camera3D/arm/flashlight"]

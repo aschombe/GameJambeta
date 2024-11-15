@@ -13,7 +13,10 @@ func _physics_process(_delta):
 func _on_body_entered(body):
 	if body.flashlight_meter.value == 100:
 		return
-	body.flashlight_meter.value += 15
+	if body.flashlight_meter.value == 0:
+		body.flashlight_on = false
+		
+	body.flashlight_meter.value += 10
 	global_position.z -= 1000
 	pickup_sound.play()
 	await get_tree().create_timer(0.5).timeout

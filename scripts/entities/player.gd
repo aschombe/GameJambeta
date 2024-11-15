@@ -27,6 +27,7 @@ func _ready():
 	init_neck_rot_z = neck.rotation.z
 	
 	flashlight.light_energy = 0
+	flashlight_meter.value = 100.0
 	flashlight_meter.get("theme_override_styles/fill").bg_color = "00ff00" # green
 	flash_on = preload("res://assets/arm_flashlight/flashlight_on.ogg")
 	flash_off = preload("res://assets/arm_flashlight/flashlight_off.ogg")

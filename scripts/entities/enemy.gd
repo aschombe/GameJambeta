@@ -41,7 +41,8 @@ func _process(_delta):
 	if dead:
 		growl.stop()
 		foot_steps.stop()
-		death.play()
+		$"../death".play()
+		queue_free()
 	
 	anim_tree.set("parameters/conditions/running", _target_in_range())
 	anim_tree.set("parameters/conditions/idle", !_target_in_range())
@@ -53,6 +54,3 @@ func _process(_delta):
 	
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < 6
-
-func _on_death_finished():
-	queue_free()
