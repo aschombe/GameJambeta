@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_1kud6"]
 [ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/Lacquer-Regular.ttf" id="2_nhkqu"]
-[ext_resource type="AudioStream" uid="uid://cnmtgydobjoci" path="res://assets/audio/menu_button.ogg" id="3_xdap0"]
+[ext_resource type="AudioStream" uid="uid://cnmtgydobjoci" path="res://assets/menu_button.ogg" id="3_xdap0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qs5al"]
 

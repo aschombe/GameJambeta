@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce1yvp6y5bajx"
-path.bptc="res://.godot/imported/day.hdr-df42ee36cf7a158471e95d8ffbeb87cf.bptc.ctex"
+uid="uid://c4jxyebo2nfek"
+path.s3tc="res://.godot/imported/car5.png-b9800d347a1c0430a638ad7da2a2509f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/skyboxes/day.hdr"
-dest_files=["res://.godot/imported/day.hdr-df42ee36cf7a158471e95d8ffbeb87cf.bptc.ctex"]
+source_file="res://assets/car/car5.png"
+dest_files=["res://.godot/imported/car5.png-b9800d347a1c0430a638ad7da2a2509f.s3tc.ctex"]
 
 [params]
 

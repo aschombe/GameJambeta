@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/entities/battery.gd" id="1_f21rv"]
 [ext_resource type="PackedScene" uid="uid://cjkvtam4em3aa" path="res://assets/arm_flashlight/battery.glb" id="1_yafdg"]
-[ext_resource type="AudioStream" uid="uid://cq1imcxjh727l" path="res://assets/audio/battery_pickup.ogg" id="3_ko5lf"]
+[ext_resource type="AudioStream" uid="uid://cq1imcxjh727l" path="res://assets/arm_flashlight/battery_pickup.ogg" id="3_ko5lf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0rmki"]
 height = 1.13491

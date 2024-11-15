@@ -8,6 +8,12 @@ var sfx_audio = 1
 var menu_sounds_audio = 1
 var film_grain = true
 
+var in_game = false
+var in_pause_menu = false
+var in_settings = false
+
+var day = true
+
 var menu_button_sound_timeout = 0.12
 
 func _ready():
@@ -56,3 +62,13 @@ func _deferred_switch_scene(res_path):
 	current_scene = s.instantiate()
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
+	
+# For instantiating scenes
+func open_scene(file_path):
+	var scene = load(file_path)
+	if scene:
+		var instance = scene.instantiate()
+		call_deferred("spawn_child", instance)
+
+func spawn_child(inst):
+	get_tree().get_root().add_child(inst)

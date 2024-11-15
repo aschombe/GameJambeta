@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce1yvp6y5bajx"
-path.bptc="res://.godot/imported/day.hdr-df42ee36cf7a158471e95d8ffbeb87cf.bptc.ctex"
+uid="uid://bucbhfteqps84"
+path.s3tc="res://.godot/imported/base_material_002_Pbr_Diffuse.png-15ca77cf3a4e59e401daed8afc955671.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/skyboxes/day.hdr"
-dest_files=["res://.godot/imported/day.hdr-df42ee36cf7a158471e95d8ffbeb87cf.bptc.ctex"]
+source_file="res://assets/enemy/base_material_002_Pbr_Diffuse.png"
+dest_files=["res://.godot/imported/base_material_002_Pbr_Diffuse.png-15ca77cf3a4e59e401daed8afc955671.s3tc.ctex"]
 
 [params]
 

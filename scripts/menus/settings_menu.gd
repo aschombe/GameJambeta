@@ -30,6 +30,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.in_settings = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_sens.text = str(roundi(1 + ((99/0.008) * (Global.mouse_sens - 0.001))))
 	mouse_sens_slider.value = 1 + ((99/0.008) * (Global.mouse_sens - 0.001))
@@ -63,8 +64,13 @@ func _on_mouse_sens_slider_drag_ended(_value_changed):
 
 func _on_back_button_pressed():
 	button_sound.play()
-	await get_tree().create_timer(Global.button_sound_timeout).timeout
-	Global.switch_scene("res://scenes/menus/main_menu.tscn")
+	await get_tree().create_timer(Global.menu_button_sound_timeout).timeout
+	if Global.in_game:
+		Global.in_settings = false
+		queue_free()
+	else:
+		Global.in_settings = false
+		Global.switch_scene("res://scenes/menus/main_menu.tscn")
 
 func _on_film_grain_pressed():
 	Global.film_grain = !Global.film_grain
@@ -78,7 +84,7 @@ func _on_film_grain_pressed():
 		button_red.visible = false
 		
 	button_sound.play()
-	await get_tree().create_timer(Global.button_sound_timeout).timeout
+	await get_tree().create_timer(Global.menu_button_sound_timeout).timeout
 
 func _on_master_audio_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(

@@ -10,6 +10,7 @@ var flashlight_max : float = 100.0
 @onready var flashlight_sound : AudioStreamPlayer3D = $neck/Camera3D/arm/flashlight/flashlight_sound
 var flash_on
 var flash_off
+@onready var light_cone = $neck/Camera3D/arm/flashlight/light_cone
 
 @export_range(0.1, 3.0, 0.1, "or_greater") var look_sens: float = 1
 @onready var neck : Node3D = $neck
@@ -17,33 +18,34 @@ var flash_off
 var init_neck_rot_x : float = 0
 var init_neck_rot_z : float = 0
 
-var mouse_captured: bool = true
+@onready var grain = $cam_fx/grain
 
 func _ready():
+	Global.in_game = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	init_neck_rot_x = neck.rotation.x
 	init_neck_rot_z = neck.rotation.z
-	flashlight_meter.get("theme_override_styles/fill").bg_color = "00ff00" # green
-	flash_on = preload("res://assets/audio/flashlight_on.ogg")
-	flash_off = preload("res://assets/audio/flashlight_off.ogg")
 	
+	flashlight.light_energy = 0
+	flashlight_meter.get("theme_override_styles/fill").bg_color = "00ff00" # green
+	flash_on = preload("res://assets/arm_flashlight/flashlight_on.ogg")
+	flash_off = preload("res://assets/arm_flashlight/flashlight_off.ogg")
 	flashlight_sound.stream = flash_on
+	light_cone.monitoring = false
 	
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		mouse_captured = true
-	elif event.is_action_pressed("escape"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		mouse_captured = false
-	
-	if mouse_captured:
-		if event is InputEventMouseMotion:
-			$neck.rotate_y(-event.relative.x * Global.mouse_sens)
-			camera.rotate_x(-event.relative.y * Global.mouse_sens)
-			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+	#if mouse_captured:
+	if event is InputEventMouseMotion:
+		$neck.rotate_y(-event.relative.x * Global.mouse_sens)
+		camera.rotate_x(-event.relative.y * Global.mouse_sens)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 func _physics_process(delta):
+	if Global.film_grain:
+		grain.visible = true
+	else:
+		grain.visible = false
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -57,6 +59,7 @@ func _physics_process(delta):
 			flashlight_sound.play()
 			
 		flashlight_on = !flashlight_on
+		light_cone.monitoring = !light_cone.monitoring
 	
 		if !flashlight_on:
 			flashlight.light_energy = 0
@@ -80,13 +83,9 @@ func _physics_process(delta):
 	elif flashlight_meter.value <= 75:
 		flashlight_meter.get("theme_override_styles/fill").bg_color = "ffff00" # yellow
 		
-
-	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -100,3 +99,11 @@ func _physics_process(delta):
 
 func _on_flashlight_timer_timeout():
 	flashlight_meter.value -= 1
+
+func _on_light_cone_body_entered(body):
+	if body.collision_mask == 5: # enemies are mask 5
+		body.dead = true
+
+func _on_hurt_field_body_entered(body):
+	if body.collision_mask == 5 and !body.dead: # enemies are mask 5
+		Global.switch_scene("res://scenes/worlds/day.tscn")

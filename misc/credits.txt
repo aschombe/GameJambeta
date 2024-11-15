@@ -6,3 +6,7 @@ Arms - https://cemckrc.itch.io/fps-arms-psx-style
 Eyehead - https://retro-spud.itch.io/psx-eyehead-monstrosity
 Font - https://fonts.google.com/share?selection.family=Lacquer
 Menu Button Sounds - https://kenney.nl/assets/interface-sounds
+Cars and Car SFX - https://ggbot.itch.io/psx-style-cars
+Enemy footsteps - https://uppbeat.io/sfx/footsteps-walking-on-concrete/4107/17549
+Enemy growl - https://pixabay.com/sound-effects/monster-growl-251374/
+Enemy death sound - https://pixabay.com/sound-effects/happy-pop-2-185287/

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/menus/settings_menu.gd" id="1_3f486"]
 [ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/Lacquer-Regular.ttf" id="2_dm021"]
-[ext_resource type="AudioStream" uid="uid://cnmtgydobjoci" path="res://assets/audio/menu_button.ogg" id="3_38jjd"]
+[ext_resource type="AudioStream" uid="uid://cnmtgydobjoci" path="res://assets/menu_button.ogg" id="3_38jjd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1gwt"]
 bg_color = Color(1, 0, 0, 1)
