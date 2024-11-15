@@ -84,7 +84,6 @@ value = 100.0
 shape = SubResource("CapsuleShape3D_l6ys4")
 
 [node name="hurt_field" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 0
 collision_mask = 2
 
@@ -132,8 +131,6 @@ collision_mask = 2
 transform = Transform3D(-8.74228e-07, -20, -2.62269e-06, 20, -8.74228e-07, 2.62269e-06, -2.62269e-06, -2.62269e-06, 20, 25.7314, 0.0776892, 0.000867605)
 shape = SubResource("ConcavePolygonShape3D_8ls0h")
 
-[node name="PauseMenu" parent="neck" instance=ExtResource("4_3xgfs")]
-
 [node name="cam_fx" type="CanvasLayer" parent="."]
 
 [node name="grain" type="ColorRect" parent="cam_fx"]
@@ -146,6 +143,8 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="flashlight_timer" type="Timer" parent="."]
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_3xgfs")]
 
 [connection signal="body_entered" from="hurt_field" to="." method="_on_hurt_field_body_entered"]
 [connection signal="body_entered" from="neck/Camera3D/arm/flashlight/light_cone" to="." method="_on_light_cone_body_entered"]

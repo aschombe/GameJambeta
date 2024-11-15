@@ -30,8 +30,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Global.in_settings = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Global.in_settings = true
 	mouse_sens.text = str(roundi(1 + ((99/0.008) * (Global.mouse_sens - 0.001))))
 	mouse_sens_slider.value = 1 + ((99/0.008) * (Global.mouse_sens - 0.001))
 	film_grain.button_pressed = Global.film_grain
@@ -67,6 +67,7 @@ func _on_back_button_pressed():
 	await get_tree().create_timer(Global.menu_button_sound_timeout).timeout
 	if Global.in_game:
 		Global.in_settings = false
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		queue_free()
 	else:
 		Global.in_settings = false
