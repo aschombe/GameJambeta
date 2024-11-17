@@ -1,10 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://b55ea2vxi3o70"]
+[gd_scene load_steps=19 format=3 uid="uid://b55ea2vxi3o70"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_2iq3a"]
+[ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/fonts/Lacquer-Regular.ttf" id="2_eqtsg"]
 [ext_resource type="PackedScene" uid="uid://dtuj1ek55774g" path="res://assets/arm_flashlight/arm.glb" id="2_jgyyh"]
 [ext_resource type="PackedScene" uid="uid://b4m8ol8pdyyp8" path="res://assets/arm_flashlight/flashlight.glb" id="3_3yyjb"]
 [ext_resource type="PackedScene" uid="uid://currljhq7q8n3" path="res://scenes/menus/pause_menu.tscn" id="4_3xgfs"]
 [ext_resource type="Shader" path="res://assets/camera_shader/grain.gdshader" id="4_4rksy"]
+[ext_resource type="AudioStream" uid="uid://10sg7doibahs" path="res://assets/player/scream.ogg" id="6_5nwfa"]
+[ext_resource type="AudioStream" uid="uid://c38sbxh1k0ijn" path="res://assets/player/heartbeat.ogg" id="7_v13wk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2tib"]
 bg_color = Color(1, 1, 1, 1)
@@ -13,10 +16,6 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8b5a"]
 bg_color = Color(0, 1, 0, 1)
@@ -25,10 +24,6 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6ys4"]
 
@@ -57,19 +52,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../cam_fx/grain:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_funrw"]
@@ -81,26 +64,15 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.966667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../cam_fx/grain:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
 
 [sub_resource type="Animation" id="Animation_p2ufa"]
 resource_name = "fade_out"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -108,22 +80,10 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.966667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../cam_fx/grain:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qouvw"]
@@ -150,16 +110,17 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="flashlight_meter" type="ProgressBar" parent="ui"]
+texture_filter = 5
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 239.0
+offset_left = 238.0
 offset_top = -173.0
 offset_right = 297.0
-offset_bottom = -146.0
+offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -167,7 +128,30 @@ theme_override_constants/outline_size = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_m2tib")
 theme_override_styles/fill = SubResource("StyleBoxFlat_d8b5a")
 step = 1.0
-value = 100.0
+
+[node name="exploration_timer" type="Label" parent="ui"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_eqtsg")
+theme_override_font_sizes/font_size = 45
+
+[node name="night_escape_timer" type="Label" parent="ui"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_eqtsg")
+theme_override_font_sizes/font_size = 45
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l6ys4")
@@ -215,12 +199,14 @@ bus = &"SFX"
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 30.4003, 0, 4.05312e-06)
 collision_layer = 0
 collision_mask = 2
+monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="neck/Camera3D/arm/flashlight/light_cone"]
-transform = Transform3D(-8.74228e-07, -20, -2.62269e-06, 20, -8.74228e-07, 2.62269e-06, -2.62269e-06, -2.62269e-06, 20, 25.7314, 0.0776892, 0.000867605)
+transform = Transform3D(-8.74227e-07, -15.446, -2.62269e-06, 20, -6.75166e-07, 2.62269e-06, -2.62269e-06, -2.0255e-06, 20, 12.048, 0.0776901, 0.000865698)
 shape = SubResource("ConcavePolygonShape3D_8ls0h")
 
 [node name="cam_fx" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="grain" type="ColorRect" parent="cam_fx"]
 material = SubResource("ShaderMaterial_p25mv")
@@ -232,9 +218,14 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="flashlight_timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="fade" type="Node3D" parent="."]
-visible = false
+
+[node name="scream" type="AudioStreamPlayer3D" parent="fade"]
+transform = Transform3D(3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 0, 0)
+stream = ExtResource("6_5nwfa")
+volume_db = -50.0
 
 [node name="ColorRect" type="ColorRect" parent="fade"]
 anchors_preset = 15
@@ -242,7 +233,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="fade"]
 libraries = {
@@ -251,10 +242,13 @@ libraries = {
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_3xgfs")]
 
+[node name="heartbeat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_v13wk")
+autoplay = true
+
 [connection signal="body_entered" from="hurt_field" to="." method="_on_hurt_field_body_entered"]
 [connection signal="body_entered" from="neck/Camera3D/arm/flashlight/light_cone" to="." method="_on_light_cone_body_entered"]
 [connection signal="timeout" from="flashlight_timer" to="." method="_on_flashlight_timer_timeout"]
-[connection signal="animation_finished" from="fade/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="neck/Camera3D/arm"]
 [editable path="neck/Camera3D/arm/flashlight"]

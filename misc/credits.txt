@@ -4,9 +4,18 @@ Flashlight Sounds - https://pixabay.com/sound-effects/flashlight-clicking-on-and
 Battery Pickup Sound - https://kenney.nl/assets/rpg-audio
 Arms - https://cemckrc.itch.io/fps-arms-psx-style
 Eyehead - https://retro-spud.itch.io/psx-eyehead-monstrosity
-Font - https://fonts.google.com/share?selection.family=Lacquer
+Main Font - https://fonts.google.com/share?selection.family=Lacquer
+Hint Font - https://fonts.google.com/share?selection.family=Shadows+Into+Light
 Menu Button Sounds - https://kenney.nl/assets/interface-sounds
 Cars and Car SFX - https://ggbot.itch.io/psx-style-cars
 Enemy footsteps - https://uppbeat.io/sfx/footsteps-walking-on-concrete/4107/17549
 Enemy growl - https://pixabay.com/sound-effects/monster-growl-251374/
 Enemy death sound - https://pixabay.com/sound-effects/happy-pop-2-185287/
+Player scream - https://www.youtube.com/watch?v=TP2kzgdQRzM
+Heartbeat sound - https://freesound.org/people/stradie/sounds/255570/
+Male NPCs - https://mcsteeg.itch.io/psx-style-villager-male-pack
+Female NPCs - https://mcsteeg.itch.io/psx-style-female-character-pack
+Portal sound (modified) - https://sfxr.me/#34T6PkoGSzQ1JN46QM24GQngFA4yjSf1UczJjzydjyK3fXuHVyZZqzWpDhsA2V16hYEkcofSHSPTWcy5LnKcVxe8pdhuSzubVndASAQ7BYJu6HM6aDdjbaCT9
+Mayor Voice - https://www.tetyys.com/SAPI4/ (Adult Male #4, Pitch 90, Speed 150)
+Paper - https://kittycatgames.itch.io/books-papers
+Page Turn SFX - https://pixabay.com/sound-effects/turnpage-99756/

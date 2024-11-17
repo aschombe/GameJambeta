@@ -1,24 +1,56 @@
 extends Node
 
 var current_scene = null
-var mouse_sens = 0.0015
-var master_audio = 1
-var music_audio = 1
-var sfx_audio = 1
-var menu_sounds_audio = 1
+var mouse_sens = 0.00285
+var master_audio = .5
+var music_audio = .5
+var sfx_audio = .5
+var menu_sounds_audio = .5
 var film_grain = true
 
-var in_game = false
 var in_pause_menu = false
-var in_settings = false
 
-var day = true
+var day : bool
+var flashlight_value = 0
+var batteries_collected = 0
+
+var score
 
 var menu_button_sound_timeout = 0.12
 
-func _ready():
-	var root = get_tree().root
-	current_scene = root.get_child(root.get_child_count() - 1)
+var hint1_collected = false
+var hint2_collected = false
+var hint3_collected = false
+var hint4_collected = false
+var hint5_collected = false
+
+func scale_mouse_sens_up(x: float) -> float:
+	var lower = 0.0009
+	var upper = 0.009
+
+	#if x < lower or x > upper:
+		#push_error("Value out of bounds. Must be between %f and %f" % [lower, upper])
+		#return 0.0
+
+	var log_lower = log(lower) / log(10)
+	var log_upper = log(upper) / log(10)
+	var log_x = log(x) / log(10)
+
+	return ((log_x - log_lower) / (log_upper - log_lower)) * 100
+
+func scale_mouse_sens_down(y: float) -> float:
+	var lower = 0.0009
+	var upper = 0.009
+
+	#if y < 0 or y > 100:
+		#push_error("Value out of bounds. Must be between 0 and 100")
+		#return 0.0
+
+	var log_lower = log(lower) / log(10)
+	var log_upper = log(upper) / log(10)
+	
+	var log_x = (y / 100) * (log_upper - log_lower) + log_lower
+	return pow(10, log_x)
 
 func save_settings():
 	var save_dict = {
@@ -28,6 +60,7 @@ func save_settings():
 		"music_audio": music_audio,
 		"sfx_audio": sfx_audio,
 		"menu_sounds_audio": menu_sounds_audio,
+		"score": score,
 	}
 	
 	var save_game = FileAccess.open("user://settings.save", FileAccess.WRITE)
@@ -52,6 +85,13 @@ func load_settings():
 		music_audio = settings.get("music_audio", music_audio)
 		sfx_audio = settings.get("sfx_audio", sfx_audio)
 		menu_sounds_audio = settings.get("menu_sounds_audio", menu_sounds_audio)
+		score = settings.get("score", score)
+
+func _ready():
+	load_settings()
+	var root = get_tree().root
+	current_scene = root.get_child(root.get_child_count() - 1)
+	score = 0
 
 func switch_scene(res_path):
 	call_deferred("_deferred_switch_scene", res_path)
@@ -62,13 +102,3 @@ func _deferred_switch_scene(res_path):
 	current_scene = s.instantiate()
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
-	
-# For instantiating scenes
-func open_scene(file_path):
-	var scene = load(file_path)
-	if scene:
-		var instance = scene.instantiate()
-		call_deferred("spawn_child", instance)
-
-func spawn_child(inst):
-	get_tree().get_root().add_child(inst)

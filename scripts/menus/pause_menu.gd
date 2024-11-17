@@ -14,14 +14,13 @@ func _ready():
 func _unhandled_input(event):
 	if event.is_action_pressed("escape") and not Global.in_pause_menu:
 		pause()
-	elif event.is_action_pressed("escape") and Global.in_pause_menu and not Global.in_settings:
+	elif event.is_action_pressed("escape") and Global.in_pause_menu:
 		unpause()
 	
 func open_settings():
 	Global.open_scene("res://scenes/menus/settings_menu.tscn")
 
 func quit_game():
-	Global.in_game = false
 	Global.in_pause_menu = false
 	get_tree().paused = false
 	Global.switch_scene("res://scenes/menus/main_menu.tscn")

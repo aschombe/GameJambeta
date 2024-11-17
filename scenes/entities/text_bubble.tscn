@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dotej8mjrp43l"]
+
+[ext_resource type="Script" path="res://scripts/entities/text_bubble.gd" id="1_6te8t"]
+[ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/fonts/Lacquer-Regular.ttf" id="2_iqfsy"]
+
+[node name="TextBubble" type="Label3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+billboard = 1
+text = "Placeholder
+"
+font = ExtResource("2_iqfsy")
+font_size = 180
+outline_size = 80
+script = ExtResource("1_6te8t")

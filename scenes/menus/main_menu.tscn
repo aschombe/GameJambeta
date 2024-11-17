@@ -1,10 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://nygksakyaw4c"]
+[gd_scene load_steps=9 format=3 uid="uid://nygksakyaw4c"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_1kud6"]
-[ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/Lacquer-Regular.ttf" id="2_nhkqu"]
-[ext_resource type="AudioStream" uid="uid://cnmtgydobjoci" path="res://assets/menu_button.ogg" id="3_xdap0"]
+[ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/fonts/Lacquer-Regular.ttf" id="2_nhkqu"]
+[ext_resource type="AudioStream" uid="uid://cnmtgydobjoci" path="res://assets/audio/menu_button.ogg" id="3_xdap0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qs5al"]
+
+[sub_resource type="Animation" id="Animation_s7kdy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade_rect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g4pk7"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade_rect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nipmj"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade_rect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nf8tc"]
+_data = {
+"RESET": SubResource("Animation_s7kdy"),
+"fade_in": SubResource("Animation_g4pk7"),
+"fade_out": SubResource("Animation_nipmj")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -40,7 +92,8 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_nhkqu")
 theme_override_font_sizes/font_size = 100
-text = "Title"
+text = "Hazardous
+   Night"
 
 [node name="start_button" type="Button" parent="."]
 layout_mode = 1
@@ -117,6 +170,21 @@ flat = true
 stream = ExtResource("3_xdap0")
 volume_db = -10.0
 bus = &"Menu"
+
+[node name="fade_rect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="fade_anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nf8tc")
+}
 
 [connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="settings_button" to="." method="_on_settings_button_pressed"]

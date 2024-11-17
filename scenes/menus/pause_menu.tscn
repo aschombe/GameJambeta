@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://currljhq7q8n3"]
 
 [ext_resource type="Shader" path="res://assets/blur.gdshader" id="1_eb6gn"]
-[ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/Lacquer-Regular.ttf" id="1_n7inx"]
+[ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/fonts/Lacquer-Regular.ttf" id="1_n7inx"]
 [ext_resource type="Script" path="res://scripts/menus/pause_menu.gd" id="2_5jou0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tekhm"]
@@ -191,6 +191,7 @@ button_mask = 3
 text = "Resume"
 
 [node name="settings_button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2

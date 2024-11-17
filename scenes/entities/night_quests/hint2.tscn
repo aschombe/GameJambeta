@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=4 uid="uid://bgrre1xlgxfh1"]
+
+[ext_resource type="Script" path="res://scripts/entities/night_quests/hint2.gd" id="1_py47j"]
+[ext_resource type="AudioStream" uid="uid://budjmcsn74ca5" path="res://assets/hints/hint.ogg" id="2_t742b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu01f"]
+albedo_color = Color(0.960784, 0.870588, 0.701961, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ndbt0"]
+_surfaces = [{
+"aabb": AABB(-0.0144535, -0.0114576, 0, 0.0290292, 0.0229151, 0.000555592),
+"format": 34359742465,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("SdckPArXIzwAAAAASdckPArXI7wAAAAAy9YivArXI7wAAAAAy9YivArXIzwAAAAAO84OPHawKzwy+18528U5PCPjGrwy+185vM0MvHawK7wy+185XMU3vCPjGjwy+185IJ2Qu324OzwjpRE6485uPOzJ9jsjpRE6HJ6UO3y4O7wjpRE6ZM5svOzJ9rsjpRE6")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_i4ybp"]
+resource_name = "Plane"
+_surfaces = [{
+"aabb": AABB(-0.0144535, -0.0114576, 0, 0.0290292, 0.0229151, 0.000555592),
+"attribute_data": PackedByteArray("AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAgD8AAIA/AAAAAAAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
+"format": 34359742487,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgA"),
+"material": SubResource("StandardMaterial3D_vu01f"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("SdckPArXIzwAAAAASdckPArXI7wAAAAAy9YivArXI7wAAAAAy9YivArXIzwAAAAAO84OPHawKzwy+18528U5PCPjGrwy+185vM0MvHawK7wy+185XMU3vCPjGjwy+185IJ2Qu324OzwjpRE6485uPOzJ9jsjpRE6HJ6UO3y4O7wjpRE6ZM5svOzJ9rsjpRE6/3//f////7//f/9/////v/9//3////+//3//f////7//f/9/u/kgw/9//3+7+SDD/3//f7v5IMP/f/9/u/kgw/9//38Q6gi1/3//fxDqCLX/f/9/EOoItf9//38Q6gi1")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ndbt0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bigmb"]
+size = Vector3(1.48474, 0.725155, 2.2246)
+
+[node name="hint2" type="Area3D"]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0, 0)
+collision_layer = 0
+script = ExtResource("1_py47j")
+
+[node name="front" type="MeshInstance3D" parent="."]
+transform = Transform3D(62.5334, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, -2.32831e-10, 0, 0)
+mesh = SubResource("ArrayMesh_i4ybp")
+skeleton = NodePath("")
+
+[node name="back" type="MeshInstance3D" parent="."]
+transform = Transform3D(-62.5334, -8.74228e-06, 3.82137e-13, 0, -4.37114e-06, -100, 5.46684e-06, -100, 4.37114e-06, -2.32831e-10, 0, 0)
+mesh = SubResource("ArrayMesh_i4ybp")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, -2.84217e-14, 1, 0.0176392, 0.00390059, 0.0286298)
+shape = SubResource("BoxShape3D_bigmb")
+
+[node name="pickup_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_t742b")
+volume_db = -15.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
