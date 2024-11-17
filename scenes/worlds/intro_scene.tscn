@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dn03fknofo4w4"]
+[gd_scene load_steps=50 format=3 uid="uid://c0sbxhqabjdfq"]
 
 [ext_resource type="Script" path="res://scripts/worlds/intro_scene.gd" id="1_bvx8b"]
 [ext_resource type="Environment" uid="uid://dudwunu7npjwx" path="res://scenes/skyboxes/day.tres" id="2_moyik"]
@@ -54,7 +54,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(10.994, 0.52, -25.1614)]
+"values": [Vector3(10.9938, 1.1925, -173.665)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -66,12 +66,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../town_view:current")
+tracks/2/path = NodePath("rear_view_car_cam:current")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -83,7 +83,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../road_view:current")
+tracks/3/path = NodePath("../mayor/mayor_cam:current")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -95,55 +95,20 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("driving:playing")
+tracks/4/path = NodePath("../mayor/TextBubble:text")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../explosion:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../town_overhead:current")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../explosion:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.14159, 0)]
+"values": ["Hi there my name is Bill.
+"]
 }
 
 [sub_resource type="Animation" id="Animation_qnjfl"]
-resource_name = "ending_cutscene"
-length = 21.0
+resource_name = "intro_cutscene"
+length = 55.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -151,114 +116,178 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(10.994, 0.52, -25.1614), Vector3(10.994, 0.52, -153.586)]
+"values": [Vector3(10.994, 0.52, -173.665), Vector3(10.994, 0.52, -39.9973), Vector3(10.994, 0.52, -25.9957)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("over_car_cam:current")
+tracks/1/path = NodePath("driving")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../town_view:current")
+tracks/2/path = NodePath("over_car_cam:current")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 4, 15),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 13.0333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true, false]
+"values": [true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../road_view:current")
+tracks/3/path = NodePath("rear_view_car_cam:current")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.96667, 7),
+"times": PackedFloat32Array(0, 2, 13.0667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("driving:playing")
+tracks/4/path = NodePath("handbrake")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(8),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("..")
+tracks/5/path = NodePath("open_door")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(9),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"fade_in"
+"args": [0.0],
+"method": &"play"
 }]
 }
-tracks/6/type = "value"
+tracks/6/type = "method"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../explosion:scale")
+tracks/6/path = NodePath("close_door")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(5, 19.3333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(150, 150, 150)]
+"times": PackedFloat32Array(11),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../town_overhead:current")
+tracks/7/path = NodePath("../mayor/mayor_cam:current")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 10.0333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(12.2667),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": [true]
 }
-tracks/8/type = "value"
+tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../explosion:rotation")
+tracks/8/path = NodePath("../mayor/mayor_intro")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(-0.0666667),
+"times": PackedFloat32Array(14),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.14159, 0)]
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("..")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4, 12.8, 51.0333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"fade_out"
+}, {
+"args": [],
+"method": &"fade_in"
+}, {
+"args": [],
+"method": &"fade_out"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("..")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(52.0333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"goto_day"
+}]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../mayor/TextBubble:text")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(14, 16, 18, 20.5, 24, 28.5, 31.5, 34.5, 38, 42.5, 46.2333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Hi there my name is Bill.
+", "I am the mayor of the town. ", "My self and the great people 
+of this town have noticed", "some strange events happening,
+especially during the night.", "And recently the FBI has set up
+camp at our local warehouse.", "We believe something 
+strange is going on.", "Please investigate this and 
+let us know if we are in danger.", "I recommend starting your 
+investigation at the community center, ", "the big building in the middle of town, 
+right next to the parking lot.", "I look forward to hearing the
+ results of your investigation.", "and here is a flashlight, if you need 
+batteries, you can find them around town."]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i750v"]
 _data = {
 "RESET": SubResource("Animation_neb4d"),
-"ending_cutscene": SubResource("Animation_qnjfl")
+"intro_cutscene": SubResource("Animation_qnjfl")
 }
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ai04v"]
@@ -274,6 +303,18 @@ tracks/0/path = NodePath("fade_rect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("black_out:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -329,11 +370,10 @@ transform = Transform3D(0.792548, 0.318258, -0.520172, -0.0507646, 0.88448, 0.46
 shadow_enabled = true
 
 [node name="player_car" parent="." instance=ExtResource("13_whqda")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.994, 0.52, -25.1614)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9938, 1.1925, -173.665)
 
 [node name="over_car_cam" type="Camera3D" parent="player_car"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00431061, 6.34409, -0.00617218)
-current = true
 
 [node name="rear_view_car_cam" type="Camera3D" parent="player_car"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.323619, -1.20248)
@@ -371,7 +411,8 @@ text = "Hi there my name is Bill.
 script = null
 
 [node name="mayor_cam" type="Camera3D" parent="mayor"]
-transform = Transform3D(5, 0, -8.52651e-14, 0, 5, 0, 8.52651e-14, 0, 5, 0.077753, 2.32064, 6.14955)
+transform = Transform3D(5, 0, -2.84217e-13, 0, 5, 0, 2.84217e-13, 0, 5, 0.0777528, 2.32064, 3.19971)
+fov = 67.0
 
 [node name="mayor_intro" type="AudioStreamPlayer3D" parent="mayor"]
 stream = ExtResource("9_e5y2b")
@@ -783,3 +824,12 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_uncve")
 }
+
+[node name="black_out" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
