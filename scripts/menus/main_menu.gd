@@ -4,6 +4,7 @@ extends Control
 @onready var fade = $fade_anim
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	fade.play("fade_in")
 	Global.load_settings()
 

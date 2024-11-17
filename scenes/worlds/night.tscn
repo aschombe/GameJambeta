@@ -1032,9 +1032,4 @@ mesh = SubResource("TorusMesh_q3kbj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00200701, -0.898695, 0)
 shape = SubResource("CylinderShape3D_6gqos")
 
-[node name="escape_time" type="Timer" parent="."]
-wait_time = 600.0
-one_shot = true
-
 [connection signal="body_entered" from="portal" to="." method="_on_portal_body_entered"]
-[connection signal="timeout" from="escape_time" to="." method="_on_exit_timer_timeout"]

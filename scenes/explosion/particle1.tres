@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bo6fmo4vt1qjs"]
+
+[ext_resource type="Shader" uid="uid://coa0mf4x4ho4b" path="res://assets/explosion/particle1.tres" id="1_f3d16"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s5bqq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wvxav"]
+seamless = true
+noise = SubResource("FastNoiseLite_s5bqq")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u88b5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sm0f0"]
+seamless = true
+noise = SubResource("FastNoiseLite_u88b5")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_f3d16")
+shader_parameter/Displacement_Strength = 0.1
+shader_parameter/Base_Color = Color(0.760784, 0.211765, 0.211765, 1)
+shader_parameter/Alpha = 10.0
+shader_parameter/Emission_Color = Color(1, 0.478431, 0, 1)
+shader_parameter/Emission_Strength = 3.0
+shader_parameter/tex_vtx_2 = SubResource("NoiseTexture2D_sm0f0")
+shader_parameter/tex_frg_2 = SubResource("NoiseTexture2D_wvxav")

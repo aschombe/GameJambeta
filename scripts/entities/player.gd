@@ -27,14 +27,12 @@ var dead : bool = false
 var racing_heart : bool = false
 
 @onready var exploration_timer = $ui/exploration_timer
-@onready var night_escape_timer = $ui/night_escape_timer
 var force_teleport : bool = false
 
 var in_hint = false
 var win = false
 
 func _ready():
-	night_escape_timer.visible = false
 	if Global.day:
 		exploration_timer.visible = true
 		heartbeat.volume_db = -80
@@ -79,15 +77,6 @@ func _physics_process(delta):
 		if force_teleport:
 			position = Vector3(0, .8, -19)
 			return
-		
-	if !Global.day:
-		var minutes = floor($"..".escape_time.time_left / 60.0)
-		var seconds = floor(fmod($"..".escape_time.time_left, 60.0))
-		if seconds < 10:
-			night_escape_timer.text = "ESCAPE TOWN: " + str(minutes) + ":0" + str(seconds)
-		else:
-			night_escape_timer.text = "ESCAPE TOWN: " + str(minutes) + ":" + str(seconds)
-		
 
 	if racing_heart:
 		heartbeat.pitch_scale = 2
@@ -98,8 +87,8 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 		
 	# DISABLE ME
-	if Input.is_action_just_pressed("flashlight_cheat"):
-		flashlight_meter.value = 100.0
+	#if Input.is_action_just_pressed("flashlight_cheat"):
+		#flashlight_meter.value = 100.0
 	
 	if Input.is_action_just_pressed("left_click") and !dead and !in_hint and !win:
 		if !flashlight_on:

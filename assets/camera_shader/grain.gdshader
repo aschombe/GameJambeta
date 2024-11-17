@@ -14,11 +14,11 @@ void fragment() {
 
     // Add time-based noise offset for smoother motion
     vec2 noise_uv = uv * grain_scale + vec2(TIME * speed);
-    
+
     // Generate smooth grain using random function
     float grain = random(noise_uv);
     grain = grain * 2.0 - 1.0; // Normalize to range [-1, 1]
-    
+
     // Mix the grain with the original color
     vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
     color.rgb += grain * intensity;

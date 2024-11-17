@@ -28,10 +28,6 @@ func scale_mouse_sens_up(x: float) -> float:
 	var lower = 0.0009
 	var upper = 0.009
 
-	#if x < lower or x > upper:
-		#push_error("Value out of bounds. Must be between %f and %f" % [lower, upper])
-		#return 0.0
-
 	var log_lower = log(lower) / log(10)
 	var log_upper = log(upper) / log(10)
 	var log_x = log(x) / log(10)
@@ -41,10 +37,6 @@ func scale_mouse_sens_up(x: float) -> float:
 func scale_mouse_sens_down(y: float) -> float:
 	var lower = 0.0009
 	var upper = 0.009
-
-	#if y < 0 or y > 100:
-		#push_error("Value out of bounds. Must be between 0 and 100")
-		#return 0.0
 
 	var log_lower = log(lower) / log(10)
 	var log_upper = log(upper) / log(10)
