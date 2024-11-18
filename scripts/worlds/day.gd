@@ -15,7 +15,9 @@ extends Node3D
 const DAY = preload("res://scenes/skyboxes/day.tres")
 
 func _ready():
-	portal_mesh.mesh.material.albedo_color = Color(255, 255 ,0)
+	player.exploration_timer.visible = true
+	Global.day = true
+	portal_mesh.mesh.material.albedo_color = "ffff00"
 	env.environment = DAY
 	grain.visible = false
 	exploration_time.start()
@@ -34,7 +36,7 @@ func _on_portal_body_exited(body):
 		portal_color.stop()
 		portal_sound.stop()
 		portal_timer.stop()
-		portal_mesh.mesh.material.albedo_color = Color(255, 255 ,0)
+		portal_mesh.mesh.material.albedo_color = "ffff00"
 
 func _on_time_to_teleport_timeout():
 	player.fade.play("fade_out")

@@ -48,7 +48,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_5wsxs")
 theme_override_font_sizes/normal_font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_wjpt4")
-text = "I saw one of the executives rush home in a hurry earlier today. They were in a panic, jumped in their car and sped off! No one at the warehouse knew what his deal was. He seemed intent on beating afternoon rush hour.
+text = "I saw one of the executives rush home in a hurry earlier today. They were in a panic, jumped in their car and sped off! No one at the warehouse knew what his deal was. He seemed intent on beating afternoon rush hour. I wish I had a house as big as his!
 
                              -A"
 
@@ -71,5 +71,6 @@ text = "Close"
 
 [node name="close_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_2e2r5")
+bus = &"SFX"
 
 [connection signal="pressed" from="ColorRect/close_button" to="." method="_on_close_button_pressed"]

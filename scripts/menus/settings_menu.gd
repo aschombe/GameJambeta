@@ -64,10 +64,6 @@ func _process(_delta):
 	music_audio.text = str(Global.music_audio * 100)
 	sfx_audio.text = str(Global.sfx_audio * 100)
 	menu_audio.text = str(Global.menu_sounds_audio * 100)
-	
-func _on_mouse_sens_slider_drag_ended(_value_changed):
-	Global.mouse_sens = Global.scale_mouse_sens_down(mouse_sens_slider.value)
-	Global.save_settings()
 
 func _on_back_button_pressed():
 	button_sound.play()
@@ -120,4 +116,8 @@ func _on_menu_audio_slider_value_changed(value):
 		linear_to_db(value / 40)
 	)
 	Global.menu_sounds_audio = menu_audio_slider.value / 100
+	Global.save_settings()
+
+func _on_mouse_sens_slider_value_changed(value):
+	Global.mouse_sens = Global.scale_mouse_sens_down(mouse_sens_slider.value)
 	Global.save_settings()

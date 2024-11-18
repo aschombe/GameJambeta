@@ -65,11 +65,13 @@ offset_right = 25.0
 offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_4br5k")
 text = "Close"
 
 [node name="close_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_o6sgx")
+bus = &"SFX"
 
 [connection signal="pressed" from="ColorRect/close_button" to="." method="_on_close_button_pressed"]

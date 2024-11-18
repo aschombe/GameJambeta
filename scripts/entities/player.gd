@@ -7,6 +7,7 @@ const JUMP_VELOCITY : float = 2.5
 var flashlight_on : bool = false
 var flashlight_max : float = 100.0
 @onready var flashlight_meter : ProgressBar = $ui/flashlight_meter
+@onready var flashlight_meter_cover = $ui/flashlight_meter_cover
 @onready var flashlight_sound : AudioStreamPlayer3D = $neck/Camera3D/arm/flashlight/flashlight_sound
 var flash_on
 var flash_off
@@ -24,7 +25,6 @@ var init_neck_rot_z : float = 0
 var dead : bool = false
 
 @onready var heartbeat = $heartbeat
-var racing_heart : bool = false
 
 @onready var exploration_timer = $ui/exploration_timer
 var force_teleport : bool = false
@@ -32,11 +32,22 @@ var force_teleport : bool = false
 var in_hint = false
 var win = false
 
+var cheat1_marker : Marker3D
+var cheat2_marker : Marker3D
+var cheat3_marker : Marker3D
+var cheat4_marker : Marker3D
+var cheat5_marker : Marker3D
+
 func _ready():
 	if Global.day:
 		exploration_timer.visible = true
 		heartbeat.volume_db = -80
 	else:
+		cheat1_marker = $"../cheats/note1"
+		cheat2_marker = $"../cheats/note2"
+		cheat3_marker = $"../cheats/note3"
+		cheat4_marker = $"../cheats/note4"
+		cheat5_marker = $"../cheats/note5"
 		exploration_timer.visible = false
 		heartbeat.volume_db = -20
 		
@@ -77,18 +88,33 @@ func _physics_process(delta):
 		if force_teleport:
 			position = Vector3(0, .8, -19)
 			return
-
-	if racing_heart:
-		heartbeat.pitch_scale = 2
 	else:
-		heartbeat.pitch_scale = 1
+		if !flashlight_on:
+			flashlight_meter_cover.visible = true
+			flashlight_meter.visible = false
+		else:
+			flashlight_meter_cover.visible = false
+			flashlight_meter.visible = true
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
-	# DISABLE ME
-	#if Input.is_action_just_pressed("flashlight_cheat"):
-		#flashlight_meter.value = 100.0
+	# CHEATS
+	# ===================================================
+	if Input.is_action_just_pressed("flashlight_cheat"):
+		flashlight_meter.value = 100.0
+		
+	if Input.is_action_just_pressed("tp1"):
+		global_position = cheat1_marker.global_position
+	elif Input.is_action_just_pressed("tp2"):
+		global_position = cheat2_marker.global_position
+	elif Input.is_action_just_pressed("tp3"):
+		global_position = cheat3_marker.global_position
+	elif Input.is_action_just_pressed("tp4"):
+		global_position = cheat4_marker.global_position
+	elif Input.is_action_just_pressed("tp5"):
+		global_position = cheat5_marker.global_position
+	#====================================================
 	
 	if Input.is_action_just_pressed("left_click") and !dead and !in_hint and !win:
 		if !flashlight_on:
@@ -145,8 +171,13 @@ func _on_flashlight_timer_timeout():
 		flashlight_meter.value -= 1
 
 func _on_light_cone_body_entered(body):
-	if body.collision_mask == 5 and flashlight_meter.value != 0: # enemies are mask 5
+	if body.collision_mask == 5 and flashlight_meter.value != 0:
 		body.stunned = true
+		body.stunned_timer.stop()
+
+func _on_light_cone_body_exited(body):
+	if body.collision_mask == 5:
+		body.stunned_timer.start()
 
 func _on_hurt_field_body_entered(body):
 	if body.collision_mask == 5 and !body.stunned and !dead and !win: # enemies are mask 5

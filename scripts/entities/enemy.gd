@@ -16,7 +16,7 @@ var can_growl = true
 var stunned = false
 @onready var stunned_timer = $"stunned-timer"
 @onready var eye_light = $Skeleton3D/mesh_002/OmniLight3D
-var play_stun = 1
+var play_stun = true
 
 func _ready():
 	eye_light.light_color = Color(255, 0, 0)
@@ -28,12 +28,13 @@ func _process(_delta):
 	nav_agent.set_target_position(player.global_position)
 	var next_nav_point = nav_agent.get_next_path_position()
 	
-	if !_target_in_range():
-		player.racing_heart = false
+	if player.in_hint:
+		stunned_timer.paused = true
+	else:
+		stunned_timer.paused = false
 	
 	if _target_in_range() and not stunned and !player.in_hint and !player.win:
 		if can_growl:
-			player.racing_heart = true
 			can_growl = false
 			growl.play()
 			
@@ -42,18 +43,15 @@ func _process(_delta):
 		if !foot_steps.playing:
 			foot_steps.play()
 	else:
-		#player.racing_heart = false
 		foot_steps.stop()
 	
 	if stunned and play_stun:
 		growl.stop()
 		foot_steps.stop()
-		if play_stun == 1:
-			$"../death".play()
-			play_stun = 0
+		$"../death".play()
+		play_stun = false
 		Global.score += 1
 		eye_light.light_color = Color(255, 255, 0)
-		stunned_timer.start()
 		
 	
 	anim_tree.set("parameters/conditions/running", _target_in_range())
@@ -68,6 +66,7 @@ func _target_in_range():
 	return global_position.distance_to(player.global_position) < 6
 
 func _on_stunnedtimer_timeout():
+	can_growl = true
 	stunned = false
 	eye_light.light_color = Color(255, 0, 0)
-	play_stun = 1
+	play_stun = true

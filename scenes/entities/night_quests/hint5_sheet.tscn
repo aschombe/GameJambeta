@@ -48,8 +48,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_f7jji")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_llhfi")
-text = "We failed. I could not get my men to control the radioactive leak underneath the warehouse causing strange creatures to emerge. The federal government is evacuating my family, and they are releasing their safeguards to control the leak. This town will be wiped off the face of the Earth. If you are reading this, I would grab your family and 
-               Somewhere far away.
+text = "We failed. I could not get my men to control the radioactive leak underneath the warehouse causing strange creatures to emerge. The federal government is evacuating my family, and they are releasing their safeguards to control the leak. This town will be wiped off the face of the Earth. If you are reading this, I would grab your family and
+
 
                                 -R"
 
@@ -58,10 +58,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
+offset_left = -2.0
 offset_top = 12.0
-offset_right = -17.0
-offset_bottom = -71.0
+offset_right = 2.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/table_border = Color(0, 0, 0, 1)
@@ -83,7 +83,8 @@ text = "
 
 
 						     get the 
- hell out of here.
+ hell out of here. Drive somewhere far
+ away.
 
                                 "
 
@@ -106,5 +107,6 @@ text = "Close"
 
 [node name="close_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ikbsj")
+bus = &"SFX"
 
 [connection signal="pressed" from="ColorRect/close_button" to="." method="_on_close_button_pressed"]

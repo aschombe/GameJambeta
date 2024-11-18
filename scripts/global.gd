@@ -9,6 +9,7 @@ var menu_sounds_audio = .5
 var film_grain = true
 
 var in_pause_menu = false
+var viewing_previous_hint = false
 
 var day : bool
 var flashlight_value = 0
@@ -94,3 +95,13 @@ func _deferred_switch_scene(res_path):
 	current_scene = s.instantiate()
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
+	
+# For instantiating scenes
+func open_scene(file_path):
+	var scene = load(file_path)
+	if scene:
+		var instance = scene.instantiate()
+		call_deferred("spawn_child", instance)
+
+func spawn_child(inst):
+	get_tree().get_root().add_child(inst)

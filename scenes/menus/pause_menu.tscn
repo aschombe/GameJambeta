@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://currljhq7q8n3"]
+[gd_scene load_steps=11 format=3 uid="uid://currljhq7q8n3"]
 
 [ext_resource type="Shader" path="res://assets/blur.gdshader" id="1_eb6gn"]
 [ext_resource type="FontFile" uid="uid://cahhshh5yubg0" path="res://assets/fonts/Lacquer-Regular.ttf" id="1_n7inx"]
 [ext_resource type="Script" path="res://scripts/menus/pause_menu.gd" id="2_5jou0"]
+[ext_resource type="AudioStream" uid="uid://bs21rcm5rcone" path="res://assets/audio/selection_error_sound.ogg" id="4_n0aeq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tekhm"]
 shader = ExtResource("1_eb6gn")
@@ -190,15 +191,14 @@ theme_override_font_sizes/font_size = 32
 button_mask = 3
 text = "Resume"
 
-[node name="settings_button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-visible = false
+[node name="open_note_button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_n7inx")
 theme_override_font_sizes/font_size = 32
 button_mask = 3
-text = "Settings"
+text = "Open Previous Note"
 
 [node name="quit_button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -214,3 +214,8 @@ libraries = {
 "": SubResource("AnimationLibrary_2lbat")
 }
 autoplay = "unpause"
+
+[node name="no_press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_n0aeq")
+volume_db = -10.0
+bus = &"Menu"

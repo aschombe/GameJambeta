@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxrqw3jmraoti"]
+
+[ext_resource type="PackedScene" uid="uid://b4m8ol8pdyyp8" path="res://assets/arm_flashlight/flashlight.glb" id="1_bkx0q"]
+[ext_resource type="Script" path="res://itch/icon.gd" id="1_mjcfd"]
+[ext_resource type="Environment" uid="uid://bdr8oulu32vqp" path="res://scenes/skyboxes/night.tres" id="2_snk5k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycwew"]
+albedo_color = Color(0.381703, 0.381703, 0.381703, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5uc3e"]
+material = SubResource("StandardMaterial3D_ycwew")
+size = Vector3(10, 10, 1)
+
+[node name="Icon" type="Node3D"]
+script = ExtResource("1_mjcfd")
+
+[node name="flashlight" parent="." instance=ExtResource("1_bkx0q")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.367185, 0, -0.504652)
+
+[node name="flashLight" parent="flashlight" index="0"]
+cast_shadow = 0
+
+[node name="flashLightCover" parent="flashlight" index="1"]
+cast_shadow = 0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="flashlight"]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -0.343042, 0, 0)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 4.5
+spot_angle = 41.0519
+
+[node name="env" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_snk5k")
+
+[node name="moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 7.398, 5.04272)
+light_energy = 0.16
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.59401)
+mesh = SubResource("BoxMesh_5uc3e")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.23666)
+current = true
+
+[editable path="flashlight"]
