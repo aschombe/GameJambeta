@@ -19,8 +19,8 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("escape") and !Global.in_pause_menu and !Global.in_portal:
-		if $"..".name == "Player":
-			if !$"..".in_hint:
+		if $"../..".name == "Player":
+			if !$"../..".in_hint:
 				pause()
 		else:
 			pause()
@@ -29,20 +29,20 @@ func _unhandled_input(event):
 	
 	if event.is_action_pressed("escape") and Global.in_pause_menu and Global.viewing_previous_hint:
 		if Global.hint5_collected:
-			$"../../hints/Hint5Sheet".queue_free()
 			Global.viewing_previous_hint = false
+			$"../../../hints/Hint5Sheet".queue_free()
 		elif Global.hint4_collected:
-			$"../../hints/Hint4Sheet".queue_free()
 			Global.viewing_previous_hint = false
+			$"../../../hints/Hint4Sheet".queue_free()
 		elif Global.hint3_collected:
-			$"../../hints/Hint3Sheet".queue_free()
 			Global.viewing_previous_hint = false
+			$"../../../hints/Hint3Sheet".queue_free()
 		elif Global.hint2_collected:
-			$"../../hints/Hint2Sheet".queue_free()
 			Global.viewing_previous_hint = false
+			$"../../../hints/Hint2Sheet".queue_free()
 		elif Global.hint1_collected:
-			$"../../hints/Hint1Sheet".queue_free()
 			Global.viewing_previous_hint = false
+			$"../../../hints/Hint1Sheet".queue_free()
 	
 func open_scene(file_path):
 	var scene = load(file_path)
@@ -51,9 +51,13 @@ func open_scene(file_path):
 		call_deferred("spawn_child", instance)
 
 func spawn_child(inst):
-	$"../../hints".add_child(inst)
+	$"../../../hints".add_child(inst)
 
 func open_previous_note():
+	if Global.viewing_previous_hint:
+		return
+	if !Global.in_pause_menu:
+		return
 	Global.viewing_previous_hint = true
 	if Global.hint5_collected:
 		open_scene(HINT_5_SHEET)
@@ -70,11 +74,19 @@ func open_previous_note():
 		$no_press.play()
 
 func quit_game():
+	if Global.viewing_previous_hint:
+		return
+	if !Global.in_pause_menu:
+		return
 	Global.in_pause_menu = false
 	get_tree().paused = false
 	Global.switch_scene("res://scenes/menus/main_menu.tscn")
 
 func unpause():
+	if Global.viewing_previous_hint:
+		return
+	if !Global.in_pause_menu:
+		return
 	get_tree().paused = false
 	Global.in_pause_menu = false
 	$".".position.x = -1500

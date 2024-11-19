@@ -50,7 +50,7 @@ func _ready():
 		cheat5_marker = $"../cheats/note5"
 		exploration_timer.visible = false
 		heartbeat.volume_db = -20
-		
+
 	if Global.film_grain and !Global.day:
 		grain.visible = true
 	else:
@@ -104,16 +104,16 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("flashlight_cheat"):
 		flashlight_meter.value = 100.0
 		
-	#if Input.is_action_just_pressed("tp1"):
-		#global_position = cheat1_marker.global_position
-	#elif Input.is_action_just_pressed("tp2"):
-		#global_position = cheat2_marker.global_position
-	#elif Input.is_action_just_pressed("tp3"):
-		#global_position = cheat3_marker.global_position
-	#elif Input.is_action_just_pressed("tp4"):
-		#global_position = cheat4_marker.global_position
-	#elif Input.is_action_just_pressed("tp5"):
-		#global_position = cheat5_marker.global_position
+	if Input.is_action_just_pressed("tp1"):
+		global_position = cheat1_marker.global_position
+	elif Input.is_action_just_pressed("tp2"):
+		global_position = cheat2_marker.global_position
+	elif Input.is_action_just_pressed("tp3"):
+		global_position = cheat3_marker.global_position
+	elif Input.is_action_just_pressed("tp4"):
+		global_position = cheat4_marker.global_position
+	elif Input.is_action_just_pressed("tp5"):
+		global_position = cheat5_marker.global_position
 	#====================================================
 	
 	if Input.is_action_just_pressed("left_click") and !dead and !in_hint and !win:

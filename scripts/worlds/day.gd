@@ -41,10 +41,10 @@ func _on_portal_body_exited(body):
 		portal_mesh.mesh.material.albedo_color = "ffff00"
 
 func _on_time_to_teleport_timeout():
+	Global.day = false
 	player.fade.play("fade_out")
 	Global.flashlight_value = player.flashlight_meter.value
 	await get_tree().create_timer(1).timeout
-	Global.day = false
 	Global.in_pause_menu = false
 	Global.switch_scene("res://scenes/worlds/night.tscn")
 
