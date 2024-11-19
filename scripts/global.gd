@@ -10,6 +10,7 @@ var film_grain = true
 
 var in_pause_menu = false
 var viewing_previous_hint = false
+var in_portal = false
 
 var day : bool
 var flashlight_value = 0

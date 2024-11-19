@@ -28,11 +28,13 @@ func _process(_delta):
 
 func _on_portal_body_entered(body):
 	if body.collision_mask == 6:
+		Global.in_portal = true
 		portal_color.play("to_red")
 		portal_timer.start()
 
 func _on_portal_body_exited(body):
 	if body.collision_mask == 6:
+		Global.in_portal = false
 		portal_color.stop()
 		portal_sound.stop()
 		portal_timer.stop()
@@ -43,6 +45,7 @@ func _on_time_to_teleport_timeout():
 	Global.flashlight_value = player.flashlight_meter.value
 	await get_tree().create_timer(1).timeout
 	Global.day = false
+	Global.in_pause_menu = false
 	Global.switch_scene("res://scenes/worlds/night.tscn")
 
 func _on_exploration_time_timeout():

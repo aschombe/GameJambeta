@@ -14,6 +14,7 @@ config/name="HazardousNight"
 run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://itch/icon.png"
+config/macos_native_icon="res://itch/icon.icns"
 config/windows_native_icon="res://itch/icon.ico"
 
 [audio]

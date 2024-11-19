@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c0sbxhqabjdfq"]
+[gd_scene load_steps=51 format=3 uid="uid://c0sbxhqabjdfq"]
 
 [ext_resource type="Script" path="res://scripts/worlds/intro_scene.gd" id="1_bvx8b"]
 [ext_resource type="Environment" uid="uid://dudwunu7npjwx" path="res://scenes/skyboxes/day.tres" id="2_moyik"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://dkg4mngtg5i4t" path="res://scenes/entities/hazmat/warrior_idle/yellow.tscn" id="37_ytx8p"]
 [ext_resource type="PackedScene" uid="uid://vr6lkm6dbw3o" path="res://scenes/entities/hazmat/weight_shift/yellow.tscn" id="38_x01je"]
 [ext_resource type="PackedScene" uid="uid://dotej8mjrp43l" path="res://scenes/entities/text_bubble.tscn" id="41_q54fr"]
+[ext_resource type="PackedScene" uid="uid://currljhq7q8n3" path="res://scenes/menus/pause_menu.tscn" id="42_kmty5"]
 
 [sub_resource type="Animation" id="Animation_neb4d"]
 length = 0.001
@@ -839,3 +840,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" parent="." instance=ExtResource("42_kmty5")]

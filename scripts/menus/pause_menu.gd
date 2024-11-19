@@ -18,8 +18,12 @@ func _ready():
 	quit_button.pressed.connect(quit_game)
 
 func _unhandled_input(event):
-	if event.is_action_pressed("escape") and not Global.in_pause_menu:
-		pause()
+	if event.is_action_pressed("escape") and !Global.in_pause_menu and !Global.in_portal:
+		if $"..".name == "Player":
+			if !$"..".in_hint:
+				pause()
+		else:
+			pause()
 	elif event.is_action_pressed("escape") and Global.in_pause_menu and !Global.viewing_previous_hint:
 		unpause()
 	

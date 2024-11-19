@@ -5,7 +5,10 @@ const SPEED = 5.0
 @onready var animation_player = $AnimationPlayer
 
 func _ready():
-	animation_player.play("Idle_1")
+	if $"..".name == "walking_citizens":
+		animation_player.play("Walk")
+	else:
+		animation_player.play("Idle_1")
 
 func _physics_process(delta):
 	if not is_on_floor():

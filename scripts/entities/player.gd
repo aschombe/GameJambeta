@@ -8,7 +8,7 @@ var flashlight_on : bool = false
 var flashlight_max : float = 100.0
 @onready var flashlight_meter : ProgressBar = $ui/flashlight_meter
 @onready var flashlight_meter_cover = $ui/flashlight_meter_cover
-@onready var flashlight_sound : AudioStreamPlayer3D = $neck/Camera3D/arm/flashlight/flashlight_sound
+@onready var flashlight_sound : AudioStreamPlayer = $neck/Camera3D/arm/flashlight/flashlight_sound
 var flash_on
 var flash_off
 @onready var light_cone = $neck/Camera3D/arm/flashlight/light_cone
@@ -104,16 +104,16 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("flashlight_cheat"):
 		flashlight_meter.value = 100.0
 		
-	if Input.is_action_just_pressed("tp1"):
-		global_position = cheat1_marker.global_position
-	elif Input.is_action_just_pressed("tp2"):
-		global_position = cheat2_marker.global_position
-	elif Input.is_action_just_pressed("tp3"):
-		global_position = cheat3_marker.global_position
-	elif Input.is_action_just_pressed("tp4"):
-		global_position = cheat4_marker.global_position
-	elif Input.is_action_just_pressed("tp5"):
-		global_position = cheat5_marker.global_position
+	#if Input.is_action_just_pressed("tp1"):
+		#global_position = cheat1_marker.global_position
+	#elif Input.is_action_just_pressed("tp2"):
+		#global_position = cheat2_marker.global_position
+	#elif Input.is_action_just_pressed("tp3"):
+		#global_position = cheat3_marker.global_position
+	#elif Input.is_action_just_pressed("tp4"):
+		#global_position = cheat4_marker.global_position
+	#elif Input.is_action_just_pressed("tp5"):
+		#global_position = cheat5_marker.global_position
 	#====================================================
 	
 	if Input.is_action_just_pressed("left_click") and !dead and !in_hint and !win:

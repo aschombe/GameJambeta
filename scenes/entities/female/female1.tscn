@@ -101,6 +101,7 @@ bind/19/pose = Transform3D(-0.991056, -0.0305873, 0.129895, 0.0172975, -0.994609
 [sub_resource type="Animation" id="Animation_5mslm"]
 resource_name = "Armature_001|Armature_001|Armature|Idle_1"
 length = 1.875
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true

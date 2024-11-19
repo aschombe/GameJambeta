@@ -429,6 +429,7 @@ tracks/14/keys = PackedFloat32Array(0, 1, -8.80814e-07, 1.48908e-07, 0.0865105, 
 [sub_resource type="Animation" id="Animation_axvbe"]
 resource_name = "Armature_001|Armature_001|Armature|Walk"
 length = 1.66667
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true

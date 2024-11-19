@@ -8,6 +8,7 @@ extends Node3D
 const NIGHT = preload("res://scenes/skyboxes/night.tres")
 
 func _ready():
+	Global.in_portal = false
 	player.flashlight_meter.value = Global.flashlight_value
 	env.environment = NIGHT
 
