@@ -11,6 +11,7 @@ Cars and Car SFX - https://ggbot.itch.io/psx-style-cars
 Enemy footsteps - https://uppbeat.io/sfx/footsteps-walking-on-concrete/4107/17549
 Enemy growl - https://pixabay.com/sound-effects/monster-growl-251374/
 Enemy Stun Sound - https://samplefocus.com/samples/monster-growl-sfx/
+Enemy Sound Extra - https://pixabay.com/sound-effects/cryo-outage-94622/
 Player scream - https://www.youtube.com/watch?v=TP2kzgdQRzM
 Heartbeat sound - https://freesound.org/people/stradie/sounds/255570/
 Male NPCs - https://mcsteeg.itch.io/psx-style-villager-male-pack
@@ -22,3 +23,4 @@ Page Turn SFX - https://pixabay.com/sound-effects/turnpage-99756/
 Explosion SFX - https://pixabay.com/sound-effects/earth-rumble-6953/
 Selection Error Sounds - https://kenney.nl/assets/interface-sounds
 Daytime music - https://pixabay.com/music/bossa-nova-brazilian-bossa-nova-jazz-acoustic-guitar-podcast-music-201763/
+Map Background - https://www.vecteezy.com/png/52389485-an-aged-and-wrinkled-sheet-of-paper-with-torn-edges-set-against-a-clean-transparent-background-for-artistic-use-old-paper-sheet-isolated-on-transparent-background

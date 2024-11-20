@@ -963,10 +963,10 @@ text = "This tree
 is Beautiful!"
 
 [node name="mayor_text" parent="text_bubbles" instance=ExtResource("24_3avds")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0230033, 1.19436, -17.2553)
-text = "Thanks for
-investigating
-our town!"
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0230033, 1.21201, -17.2553)
+text = "Press M to open
+and close a map
+of the town!"
 
 [node name="npcs" type="Node3D" parent="."]
 

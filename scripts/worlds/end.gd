@@ -18,5 +18,5 @@ func fade_in():
 func fade_out():
 	fade_anim.play("fade_out")
 
-func goto_menu():
-	Global.switch_scene("res://scenes/menus/main_menu.tscn")
+func goto_score():
+	Global.switch_scene("res://scenes/menus/score.tscn")

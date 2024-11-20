@@ -7,7 +7,11 @@ extends Node3D
 
 const NIGHT = preload("res://scenes/skyboxes/night.tres")
 
+var start_time = 0
+
 func _ready():
+	start_time = Time.get_unix_time_from_system()
+	Global.score = 0
 	Global.hint1_collected = false
 	Global.hint2_collected = false
 	Global.hint3_collected = false
@@ -33,4 +37,6 @@ func _on_portal_body_entered(body):
 		player.in_hint = true
 		player.fade.play("fade_out")
 		await get_tree().create_timer(1).timeout
+		Global.time_to_win = Time.get_unix_time_from_system() - start_time
+		Global.save_settings()
 		Global.switch_scene("res://scenes/worlds/end.tscn")

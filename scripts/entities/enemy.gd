@@ -50,7 +50,6 @@ func _process(_delta):
 		foot_steps.stop()
 		$"../death".play()
 		play_stun = false
-		Global.score += 1
 		eye_light.light_color = Color(255, 255, 0)
 		
 	
@@ -70,3 +69,4 @@ func _on_stunnedtimer_timeout():
 	stunned = false
 	eye_light.light_color = Color(255, 0, 0)
 	play_stun = true
+	Global.score += 1

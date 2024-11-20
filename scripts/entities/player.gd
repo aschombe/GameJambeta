@@ -22,6 +22,9 @@ var flash_off
 @onready var scream = $fade/scream
 var dead : bool = false
 
+@onready var map = $ui/map_background/map
+@onready var map_background = $ui/map_background
+
 @onready var heartbeat = $heartbeat
 
 @onready var exploration_timer = $ui/exploration_timer
@@ -37,6 +40,10 @@ var cheat4_marker : Marker3D
 var cheat5_marker : Marker3D
 
 func _ready():
+	Global.in_map = false
+	map.visible = false
+	map_background.visible = false
+	
 	if Global.day:
 		exploration_timer.visible = true
 		heartbeat.volume_db = -80
@@ -67,7 +74,7 @@ func _ready():
 	fade.play("fade_in")
 	
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and !dead and !in_hint and !win:
+	if event is InputEventMouseMotion and !dead and !in_hint and !win and !Global.in_map:
 		$neck.rotation.y += (-event.relative.x * Global.mouse_sens)
 		camera.rotation.x += (-event.relative.y * Global.mouse_sens)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
@@ -95,6 +102,12 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
+	if Input.is_action_just_pressed("map"):
+		if !Global.in_pause_menu:
+			Global.in_map = !Global.in_map
+			map.visible = !map.visible
+			map_background.visible = !map_background.visible
+	
 	# CHEATS
 	# ===================================================
 	if Input.is_action_just_pressed("flashlight_cheat"):
@@ -112,7 +125,7 @@ func _physics_process(delta):
 		global_position = cheat5_marker.global_position
 	#====================================================
 	
-	if Input.is_action_just_pressed("left_click") and !dead and !in_hint and !win:
+	if Input.is_action_just_pressed("left_click") and !dead and !in_hint and !win and !Global.in_map:
 		if !flashlight_on:
 			flashlight_sound.stream = flash_on
 			flashlight_sound.play()
@@ -148,12 +161,12 @@ func _physics_process(delta):
 	else:
 		flashlight_meter.get("theme_override_styles/fill").bg_color = "00ff00" # green
 		
-	if Input.is_action_just_pressed("jump") and is_on_floor() and !dead and !in_hint and !win:
+	if Input.is_action_just_pressed("jump") and is_on_floor() and !dead and !in_hint and !win and !Global.in_map:
 		velocity.y = JUMP_VELOCITY
 
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction and !dead and !in_hint:
+	if direction and !dead and !in_hint and !Global.in_map:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
@@ -178,7 +191,8 @@ func _on_light_cone_body_exited(body):
 func _on_hurt_field_body_entered(body):
 	if body.collision_mask == 5 and !body.stunned and !dead and !win: # enemies are mask 5
 		dead = true
-		scream.play()
-		fade.play("fade_out")
-		await get_tree().create_timer(2).timeout
-		Global.switch_scene("res://scenes/worlds/night.tscn")
+		Global.switch_scene("res://scenes/worlds/die.tscn")
+		#scream.play()
+		#fade.play("fade_out")
+		#await get_tree().create_timer(2).timeout
+		#Global.switch_scene("res://scenes/worlds/night.tscn")

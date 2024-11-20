@@ -7,7 +7,9 @@ var music_audio = .5
 var sfx_audio = .5
 var menu_sounds_audio = .5
 var film_grain = true
+var skip_cutscene = false
 
+var in_map = false
 var in_pause_menu = false
 var viewing_previous_hint = false
 var in_portal = false
@@ -16,7 +18,9 @@ var day : bool
 var flashlight_value = 0
 var batteries_collected = 0
 
-var score
+var score = 0
+var time_to_win = 0 # in seconds
+var high_score = -INF
 
 var menu_button_sound_timeout = 0.12
 
@@ -50,11 +54,12 @@ func save_settings():
 	var save_dict = {
 		"mouse_sens": mouse_sens,
 		"film_grain": film_grain,
+		"skip_cutscene": skip_cutscene,
 		"master_audio": master_audio,
 		"music_audio": music_audio,
 		"sfx_audio": sfx_audio,
 		"menu_sounds_audio": menu_sounds_audio,
-		"score": score,
+		"high_score": high_score,
 	}
 	
 	var save_game = FileAccess.open("user://settings.save", FileAccess.WRITE)
@@ -75,11 +80,12 @@ func load_settings():
 		var settings = json.get_data()
 		mouse_sens = settings.get("mouse_sens", mouse_sens)
 		film_grain = settings.get("film_grain", film_grain)
+		skip_cutscene = settings.get("skip_cutscene", skip_cutscene)
 		master_audio = settings.get("master_audio", master_audio)
 		music_audio = settings.get("music_audio", music_audio)
 		sfx_audio = settings.get("sfx_audio", sfx_audio)
 		menu_sounds_audio = settings.get("menu_sounds_audio", menu_sounds_audio)
-		score = settings.get("score", score)
+		high_score = settings.get("high_score",high_score)
 
 func _ready():
 	load_settings()

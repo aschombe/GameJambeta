@@ -16,7 +16,10 @@ func _on_start_button_pressed():
 	fade.play("fade_out")
 	await get_tree().create_timer(1.0).timeout
 	Global.day = true
-	Global.switch_scene("res://scenes/worlds/intro_scene.tscn")
+	if Global.skip_cutscene:
+		Global.switch_scene("res://scenes/worlds/day.tscn")
+	else:
+		Global.switch_scene("res://scenes/worlds/intro_scene.tscn")
 
 func _on_quit_button_pressed():
 	button_sound.play()

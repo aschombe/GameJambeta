@@ -2,9 +2,15 @@ extends Control
 
 @onready var mouse_sens_slider : HSlider = $mouse/mouse_sens_slider
 @onready var mouse_sens : Label = $mouse/mouse_sens
+
 @onready var film_grain = $film_grain/film_grain
-@onready var button_white: Control = $film_grain/button_white
-@onready var button_red: Control = $film_grain/button_red
+@onready var button_white_film: Control = $film_grain/button_white
+@onready var button_red_film: Control = $film_grain/button_red
+
+@onready var skip_cutscene = $skip_cutscene/skip_cutscene
+@onready var button_white_skip = $skip_cutscene/button_white
+@onready var button_red_skip = $skip_cutscene/button_red
+
 
 # Settings titles
 @onready var master_audio_label = $audio_settings/master_audio_label
@@ -51,11 +57,18 @@ func _ready():
 	film_grain.button_pressed = Global.film_grain
 	
 	if Global.film_grain:
-		button_white.visible = false
-		button_red.visible = true
+		button_white_film.visible = false
+		button_red_film.visible = true
 	else:
-		button_white.visible = true
-		button_red.visible = false
+		button_white_film.visible = true
+		button_red_film.visible = false
+	
+	if Global.skip_cutscene:
+		button_white_skip.visible = false
+		button_red_skip.visible = true
+	else:
+		button_white_skip.visible = true
+		button_red_skip.visible = false
 	
 
 func _process(_delta):
@@ -77,11 +90,25 @@ func _on_film_grain_pressed():
 	Global.save_settings()
 	
 	if Global.film_grain:
-		button_white.visible = false
-		button_red.visible = true
+		button_white_film.visible = false
+		button_red_film.visible = true
 	else:
-		button_white.visible = true
-		button_red.visible = false
+		button_white_film.visible = true
+		button_red_film.visible = false
+		
+	button_sound.play()
+	await get_tree().create_timer(Global.menu_button_sound_timeout).timeout
+
+func _on_skip_cutscene_pressed():
+	Global.skip_cutscene = !Global.skip_cutscene
+	Global.save_settings()
+	
+	if Global.skip_cutscene:
+		button_white_skip.visible = false
+		button_red_skip.visible = true
+	else:
+		button_white_skip.visible = true
+		button_red_skip.visible = false
 		
 	button_sound.play()
 	await get_tree().create_timer(Global.menu_button_sound_timeout).timeout

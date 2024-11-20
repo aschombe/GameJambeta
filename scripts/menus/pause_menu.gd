@@ -18,7 +18,7 @@ func _ready():
 	quit_button.pressed.connect(quit_game)
 
 func _unhandled_input(event):
-	if event.is_action_pressed("escape") and !Global.in_pause_menu and !Global.in_portal:
+	if event.is_action_pressed("escape") and !Global.in_pause_menu and !Global.in_portal and !Global.in_map:
 		if $"../..".name == "Player":
 			if !$"../..".in_hint:
 				pause()
@@ -49,7 +49,7 @@ func _unhandled_input(event):
 			if get_node_or_null("../../../hints/Hint1Sheet") != null:
 				$"../../../hints/Hint1Sheet".queue_free()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !Global.day and !Global.in_pause_menu and !$"../..".in_hint:
 		if Global.hint1_collected:
 			if get_node_or_null("../../../hints/Hint1Sheet") != null:
