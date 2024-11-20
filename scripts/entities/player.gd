@@ -16,8 +16,6 @@ var flash_off
 @export_range(0.1, 3.0, 0.1, "or_greater") var look_sens: float = 1
 @onready var neck : Node3D = $neck
 @onready var camera : Camera3D = $neck/Camera3D
-var init_neck_rot_x : float = 0
-var init_neck_rot_z : float = 0
 
 @onready var grain = $cam_fx/grain
 @onready var fade = $fade/AnimationPlayer
@@ -57,8 +55,6 @@ func _ready():
 		grain.visible = false
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	init_neck_rot_x = neck.rotation.x
-	init_neck_rot_z = neck.rotation.z
 	
 	flashlight.light_energy = 0
 	flashlight_meter.value = 0.0
@@ -72,8 +68,8 @@ func _ready():
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and !dead and !in_hint and !win:
-		$neck.rotate_y(-event.relative.x * Global.mouse_sens)
-		camera.rotate_x(-event.relative.y * Global.mouse_sens)
+		$neck.rotation.y += (-event.relative.x * Global.mouse_sens)
+		camera.rotation.x += (-event.relative.y * Global.mouse_sens)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 func _physics_process(delta):
