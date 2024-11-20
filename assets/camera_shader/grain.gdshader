@@ -3,8 +3,8 @@ shader_type canvas_item;
 const float range = 0.05;
 const float noiseQuality = 250.0;
 const float noiseIntensity = 0.001;
-const float offsetIntensity = 0.005;
-const float colorOffsetIntensity = 0.5;
+const float offsetIntensity = 0.0025;
+const float colorOffsetIntensity = 0.2;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 

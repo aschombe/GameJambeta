@@ -30,20 +30,43 @@ func _unhandled_input(event):
 	if event.is_action_pressed("escape") and Global.in_pause_menu and Global.viewing_previous_hint:
 		if Global.hint5_collected:
 			Global.viewing_previous_hint = false
-			$"../../../hints/Hint5Sheet".queue_free()
+			if get_node_or_null("../../../hints/Hint5Sheet") != null:
+				$"../../../hints/Hint5Sheet".queue_free()
 		elif Global.hint4_collected:
 			Global.viewing_previous_hint = false
-			$"../../../hints/Hint4Sheet".queue_free()
+			if get_node_or_null("../../../hints/Hint4Sheet") != null:
+				$"../../../hints/Hint4Sheet".queue_free()
 		elif Global.hint3_collected:
 			Global.viewing_previous_hint = false
-			$"../../../hints/Hint3Sheet".queue_free()
+			if get_node_or_null("../../../hints/Hint3Sheet") != null:
+				$"../../../hints/Hint3Sheet".queue_free()
 		elif Global.hint2_collected:
 			Global.viewing_previous_hint = false
-			$"../../../hints/Hint2Sheet".queue_free()
+			if get_node_or_null("../../../hints/Hint2Sheet") != null:
+				$"../../../hints/Hint2Sheet".queue_free()
 		elif Global.hint1_collected:
 			Global.viewing_previous_hint = false
-			$"../../../hints/Hint1Sheet".queue_free()
-	
+			if get_node_or_null("../../../hints/Hint1Sheet") != null:
+				$"../../../hints/Hint1Sheet".queue_free()
+
+func _process(delta: float) -> void:
+	if !Global.day and !Global.in_pause_menu and !$"../..".in_hint:
+		if Global.hint1_collected:
+			if get_node_or_null("../../../hints/Hint1Sheet") != null:
+				$"../../../hints/Hint1Sheet".queue_free()
+		if Global.hint2_collected:
+			if get_node_or_null("../../../hints/Hint2Sheet") != null:
+				$"../../../hints/Hint2Sheet".queue_free()
+		if Global.hint3_collected:
+			if get_node_or_null("../../../hints/Hint3Sheet") != null:
+				$"../../../hints/Hint3Sheet".queue_free()
+		if Global.hint4_collected:
+			if get_node_or_null("../../../hints/Hint4Sheet") != null:
+				$"../../../hints/Hint4Sheet".queue_free()
+		if Global.hint5_collected:
+			if get_node_or_null("../../../hints/Hint5Sheet") != null:
+				$"../../../hints/Hint5Sheet".queue_free()
+
 func open_scene(file_path):
 	var scene = load(file_path)
 	if scene:
